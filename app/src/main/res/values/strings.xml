@@ -1,7 +1,26 @@
 <resources>
     <string name="app_name">AD340_HW1</string>
-    <string name="myText">Boyd,Jack 4/20/2020</string>
-    <string name="Question">What do you put in a toaster?</string>
+    <string name="my_text">Boyd,Jack 4/26/2020</string>
+    <string name="j">j</string>
+    <string name="question">What do you put in a toaster?</string>
     <string name="hello_world">Hello World!</string>
     <string name="click_me">Click Me!</string>
+    <string name="ad340">AD340 App</string>
+    <string name="hw1_activity">HW1 Activity</string>
+    <string name="hw2_activity">HW2 Activity</string>
+    <string name="sign_up">SIGN UP</string>
+    <string name="thank_you">Thank You for Signing Up </string>
+    <string name="submit">Submit</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="email">Email</string>
+    <string name="username">Username</string>
+    <string name="dob">Date of Birth</string>
+    <string name="back">Back</string>
+
+    <string name="invalid_first">Invalid First Name</string>
+    <string name="invalid_last">Invalid Last Name</string>
+    <string name="invalid_email">Invalid Email</string>
+    <string name="invalid_user">Invalid Username</string>
+    <string name="invalid_dob">Must be over 18</string>
 </resources>
