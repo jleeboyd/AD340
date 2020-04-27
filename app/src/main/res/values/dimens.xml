@@ -2,4 +2,8 @@
 <resources>
     <dimen name="my_value1">165dp</dimen>
     <dimen name="my_value2">450dp</dimen>
+    <dimen name="my_value3">50dp</dimen>
+    <dimen name="my_value4">30dp</dimen>
+    <dimen name="my_value5">20dp</dimen>
+    <dimen name="my_value6">5dp</dimen>
 </resources>
