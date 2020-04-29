@@ -9,7 +9,7 @@
     <string name="hw1_activity">HW1 Activity</string>
     <string name="hw2_activity">HW2 Activity</string>
     <string name="sign_up">SIGN UP</string>
-    <string name="thank_you">Thank You for Signing Up </string>
+    <string name="thank_you">Thank You for Signing Up</string>
     <string name="submit">Submit</string>
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>
@@ -23,4 +23,10 @@
     <string name="invalid_email">Invalid Email</string>
     <string name="invalid_user">Invalid Username</string>
     <string name="invalid_dob">Must be over 18</string>
+
+    <string name="a">a</string>
+    <string name="b">b</string>
+    <string name="c">c</string>
+    <string name="d">d</string>
+    <string name="e">e</string>
 </resources>

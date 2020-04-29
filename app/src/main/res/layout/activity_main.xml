@@ -122,10 +122,3 @@
     </LinearLayout>
 </ScrollView>
 
-<!--<Button-->
-<!--android:id="@+id/HW1ExampleBtn"-->
-<!--android:layout_width="wrap_content"-->
-<!--android:layout_height="wrap_content"-->
-<!--android:text="@string/hw1_activity"-->
-<!--android:layout_gravity="center_horizontal"-->
-<!--android:onClick="goToHW1_Activity" />-->
