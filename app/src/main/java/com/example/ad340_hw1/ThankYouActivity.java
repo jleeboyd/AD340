@@ -29,13 +29,18 @@ public class ThankYouActivity extends AppCompatActivity {
         Bundle b = intent.getExtras();
 
         StringBuilder msg = new StringBuilder(getResources().getString(R.string.thank_you));
-        msg.append(b.getString(Constants.KEY_USERNAME));
+        msg.append(" "+ b.getString(Constants.KEY_USERNAME));
         textView.setText(msg);
 
         Log.i(TAG, "onCreate()");
     }
 
-    //note: No onRestart() prior
+    @Override
+    protected void onRestart(){
+        super.onRestart(); //override default onStart() and obtain from AppCompatActivity (parent) logic.
+        Log.i(TAG,"onRestart()");
+    }
+
     @Override
     protected void onStart(){
         super.onStart(); //override default onStart() and obtain from AppCompatActivity (parent) logic.
@@ -53,9 +58,9 @@ public class ThankYouActivity extends AppCompatActivity {
             textView.setText((String)savedInstanceState.get(Constants.KEY_USERNAME));
         }
 
-        if (savedInstanceState.containsKey(Constants.KEY_BTN_TEXT)) {
-            button.setText((String) savedInstanceState.get(Constants.KEY_BTN_TEXT));
-        }
+//        if (savedInstanceState.containsKey(Constants.KEY_BTN_TEXT)) {
+//            button.setText((String) savedInstanceState.get(Constants.KEY_BTN_TEXT));
+//        }
     }
 
     @Override
@@ -64,8 +69,8 @@ public class ThankYouActivity extends AppCompatActivity {
 
         Log.i(TAG, "onSaveInstanceState()");
         outState.putString(Constants.KEY_FIRST_NAME, textView.getText().toString());
-        outState.putString(Constants.KEY_BTN_TEXT, button.getText().toString());
     }
+
     @Override
     protected void onResume(){
         super.onResume();
@@ -77,8 +82,6 @@ public class ThankYouActivity extends AppCompatActivity {
         super.onPause();
         Log.i(TAG,"onPause()");
     }
-
-    //save instance state
 
     @Override
     protected void onStop() {
@@ -94,6 +97,8 @@ public class ThankYouActivity extends AppCompatActivity {
 
     public void goToMainActivity(View view) {
         Intent intent = new Intent(ThankYouActivity.this, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); //do no onCreate() main again w/ manifest
         startActivity(intent);
+//        finish(); //to onDestroy() current activity.
     }
 }
