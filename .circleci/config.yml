@@ -1,4 +1,4 @@
-#<!--
+#
 #  Skip to content
 #    All gists
 #    Back to GitHub
@@ -12,7 +12,7 @@
 #
 #    Code
 #    Revisions 6
-#    config.yml for Android build + Firebase test lab -->
+#    config.yml for Android build + Firebase test lab
   version: 2
   references:
 
