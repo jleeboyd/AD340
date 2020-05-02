@@ -8,7 +8,10 @@
         android:label="@string/ad340"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+
+        android:requestLegacyExternalStorage="true">
+
         <activity android:name=".MainActivity"
                   android:launchMode="singleTask">
             <intent-filter>
@@ -21,5 +24,8 @@
         <activity android:name=".ThankYouActivity" />
 
     </application>
+<!--our app has permission to internet and sd card-->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
 </manifest>
