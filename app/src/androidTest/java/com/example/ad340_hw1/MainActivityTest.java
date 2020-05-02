@@ -72,53 +72,53 @@ public class MainActivityTest {
 //                .perform(click());
     }
 
-
-    @Test
-    public void testUnuccessfulSignup()
-    {
-        //call other tests
-    }
-
-    //test if first name field is blank
-    @Test
-    public void testFirstNameToast()
-    {
-        //button click
-        //check if toast matches
-    }
-
-    //test if last name field is blank
-    @Test
-    public void testLastNameToast()
-    {
-        //enter first name and button click
-        //check if toast matches
-    }
-
-    //test if email field is blank
-    @Test
-    public void testEmailToast()
-    {
-        //enter first name, last name and button click
-        //check if toast matches
-    }
-
-    //test if username field is blank
-    @Test
-    public void testUsernameToast()
-    {
-        //enter first name, last name, email and button click
-        //check if toast matches
-    }
-
-    //test date picker toast
-    @Test
-    public void testDatePickerToast()
-    {
-        //enter first name, last name, email, username and incorrect date and button click
-        //check if toast matches
-    }
-
-
+//
+//    @Test
+//    public void testUnuccessfulSignup()
+//    {
+//        //call other tests
+//    }
+//
+//    //test if first name field is blank
+//    @Test
+//    public void testFirstNameToast()
+//    {
+//        //button click
+//        //check if toast matches
+//    }
+//
+//    //test if last name field is blank
+//    @Test
+//    public void testLastNameToast()
+//    {
+//        //enter first name and button click
+//        //check if toast matches
+//    }
+//
+//    //test if email field is blank
+//    @Test
+//    public void testEmailToast()
+//    {
+//        //enter first name, last name and button click
+//        //check if toast matches
+//    }
+//
+//    //test if username field is blank
+//    @Test
+//    public void testUsernameToast()
+//    {
+//        //enter first name, last name, email and button click
+//        //check if toast matches
+//    }
+//
+//    //test date picker toast
+//    @Test
+//    public void testDatePickerToast()
+//    {
+//        //enter first name, last name, email, username and incorrect date and button click
+//        //check if toast matches
+//    }
+//
+//
 
 }

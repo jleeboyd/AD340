@@ -17,23 +17,23 @@ import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
 
-import static org.junit.Assert.*;
-@RunWith(AndroidJUnit4.class)
-public class ThankYouActivityTest {
-    //every time this test is run, startup the main activity to start testing
-    @Rule
-    public ActivityScenarioRule<ThankYouActivity> activityScenarioRule
-            = new ActivityScenarioRule<>(ThankYouActivity.class);
-
-    //checks that text on screen matches myText
-    @Test
-    public void hasTextOnScreen()
-    {
-        onView(withId(R.id.textViewThankYou))
-                .check(matches(withText(R.string.thank_you)));
-
-    }
-
-
-
-}
+//import static org.junit.Assert.*;
+//@RunWith(AndroidJUnit4.class)
+//public class ThankYouActivityTest {
+//    //every time this test is run, startup the main activity to start testing
+//    @Rule
+//    public ActivityScenarioRule<ThankYouActivity> activityScenarioRule
+//            = new ActivityScenarioRule<>(ThankYouActivity.class);
+//
+//    //checks that text on screen matches myText
+//    @Test
+//    public void hasTextOnScreen()
+//    {
+//        onView(withId(R.id.textViewThankYou))
+//                .check(matches(withText(R.string.thank_you)));
+//
+//    }
+//
+//
+//
+//}
