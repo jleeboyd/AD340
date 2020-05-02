@@ -1,18 +1,18 @@
-
-  Skip to content
-    All gists
-    Back to GitHub
-    @jleeboyd
-    @KyleBastien KyleBastien/config.yml for Android build + Firebase test lab
-    Last active 16 days ago • Report abuse
-
-    0
-
-    0
-
-    Code
-    Revisions 6
-    config.yml for Android build + Firebase test lab
+#<!--
+#  Skip to content
+#    All gists
+#    Back to GitHub
+#    @jleeboyd
+#    @KyleBastien KyleBastien/config.yml for Android build + Firebase test lab
+#    Last active 16 days ago • Report abuse
+#
+#    0
+#
+#    0
+#
+#    Code
+#    Revisions 6
+#    config.yml for Android build + Firebase test lab -->
   version: 2
   references:
 
@@ -245,20 +245,20 @@
               - build_release
               - test_unit
               - test_instrumented
-    @jleeboyd
-    Attach files by dragging & dropping, selecting or pasting them.
-
-    © 2020 GitHub, Inc.
-    Terms
-    Privacy
-    Security
-    Status
-    Help
-
-    Contact GitHub
-    Pricing
-    API
-    Training
-    Blog
-    About
+#    @jleeboyd
+#    Attach files by dragging & dropping, selecting or pasting them.
+#
+#    © 2020 GitHub, Inc.
+#    Terms
+#    Privacy
+#    Security
+#    Status
+#    Help
+#
+#    Contact GitHub
+#    Pricing
+#    API
+#    Training
+#    Blog
+#    About
 
