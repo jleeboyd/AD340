@@ -21,7 +21,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ThankYouActivity" />
+        <activity android:name=".ProfileActivity" />
 
     </application>
 <!--our app has permission to internet and sd card-->

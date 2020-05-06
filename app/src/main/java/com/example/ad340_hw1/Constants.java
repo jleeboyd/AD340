@@ -6,13 +6,14 @@ public class Constants {
     static final String KEY_EMAIL = "@string/c";
     static final String KEY_USERNAME = "@string/d";
     static final String KEY_AGE = "@string/e";
+    static final String KEY_DESCRIPTION = "@string/f";
+    static final String KEY_OCCUPATION = "@string/g";
 
     static final int KEY_DOB_YEAR = 0;
     static final int KEY_DOB_MONTH = 1;
     static final int KEY_DOB_DAY = 2;
 
-    static final int KEY_DAY = 3;
-    static final int KEY_MONTH = 4;
-    static final int KEY_YEAR = 5;
-//    static final String KEY_BTN_TEXT = "@string/back";
+    static final String KEY_DAY = "3";
+    static final String KEY_MONTH = "4";
+    static final String KEY_YEAR = "5";
 }

@@ -4,6 +4,10 @@
     <dimen name="my_value2">450dp</dimen>
     <dimen name="my_value3">50dp</dimen>
     <dimen name="my_value4">30dp</dimen>
+    <dimen name="my_value15">15dp</dimen>
     <dimen name="my_value5">20dp</dimen>
     <dimen name="my_value6">5dp</dimen>
+    <dimen name="desc_length">20</dimen>
+    <dimen name="profile_h">200dp</dimen>
+    <dimen name="profile_w">414dp</dimen>
 </resources>
