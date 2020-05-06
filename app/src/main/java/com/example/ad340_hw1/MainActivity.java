@@ -1,23 +1,18 @@
 package com.example.ad340_hw1;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
-import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Calendar;
-import java.util.Date;
 
 public class MainActivity extends AppCompatActivity{
 
@@ -28,6 +23,8 @@ public class MainActivity extends AppCompatActivity{
     private EditText editTextLast;
     private EditText editTextEmail;
     private EditText editTextUser;
+    private EditText editTextDescription;
+    private EditText editTextOccupation;
 
     private DatePicker date;
 
@@ -49,6 +46,8 @@ public class MainActivity extends AppCompatActivity{
         editTextLast  = findViewById(R.id.editTextLastName);
         editTextEmail = findViewById(R.id.editTextEmail);
         editTextUser  = findViewById(R.id.editTextUsername);
+        editTextOccupation = findViewById(R.id.editTextOccupation);
+        editTextDescription = findViewById(R.id.editTextDescription);
 
         date = findViewById(R.id.dobDatePicker);
 
@@ -73,6 +72,8 @@ public class MainActivity extends AppCompatActivity{
         editTextLast.setText("");
         editTextEmail.setText("");
         editTextUser.setText("");
+        editTextDescription.setText("");
+        editTextOccupation.setText("");
         date.updateDate(year, month, day);
 
         Log.i(TAG, "onRestart()");
@@ -127,17 +128,21 @@ public class MainActivity extends AppCompatActivity{
         if (savedInstanceState.containsKey(Constants.KEY_USERNAME)) {
             editTextUser.setText((String) savedInstanceState.get(Constants.KEY_USERNAME));
         }
+        if (savedInstanceState.containsKey(Constants.KEY_DESCRIPTION)) {
+            editTextUser.setText((String) savedInstanceState.get(Constants.KEY_DESCRIPTION));
+        }
+        if (savedInstanceState.containsKey(Constants.KEY_OCCUPATION)) {
+            editTextUser.setText((String) savedInstanceState.get(Constants.KEY_OCCUPATION));
+        }
 
-        //restore date picker
-//        if (savedInstanceState.containsKey(Constants.KEY_DOB_YEAR)) {
-//            editTextUser.setText((String) savedInstanceState.get(Constants.KEY_DOB_YEAR)));
-//        }
-//
-//        if (savedInstanceState.containsKey(Constants.KEY_USERNAME)) {
-//            editTextUser.setText((String) savedInstanceState.get(Constants.KEY_USERNAME));
-//        }
+        //onRestore date picker
+        int myYear = Integer.parseInt((String) savedInstanceState.get(Constants.KEY_YEAR));
+        int myMonth = Integer.parseInt((String) savedInstanceState.get(Constants.KEY_MONTH));
+        int myDay = Integer.parseInt((String) savedInstanceState.get(Constants.KEY_DAY));
 
-        //need date picker
+        if (savedInstanceState.containsKey(String.valueOf((Constants.KEY_YEAR)))) {
+            date.updateDate(myYear,myMonth,myDay);
+        }
 
         Log.i(TAG, "onRestoreInstanceState()");
     }
@@ -151,14 +156,15 @@ public class MainActivity extends AppCompatActivity{
         outState.putString(Constants.KEY_LAST_NAME,  editTextLast.getText().toString());
         outState.putString(Constants.KEY_EMAIL,      editTextEmail.getText().toString());
         outState.putString(Constants.KEY_USERNAME,   editTextUser.getText().toString());
+        outState.putString(Constants.KEY_OCCUPATION,    editTextUser.getText().toString());
+        outState.putString(Constants.KEY_DESCRIPTION,   editTextUser.getText().toString());
 
-        //store date picker current data
-        outState.putInt(String.valueOf(Constants.KEY_YEAR), date.getYear());
-        outState.putInt(String.valueOf(Constants.KEY_MONTH), date.getMonth());
-        outState.putInt(String.valueOf(Constants.KEY_DAY), date.getDayOfMonth());
+        //onSave datePicker
+        outState.putString(String.valueOf(Constants.KEY_YEAR), String.valueOf(date.getYear()));
+        outState.putString(String.valueOf(Constants.KEY_MONTH), String.valueOf(date.getMonth()));
+        outState.putString(String.valueOf(Constants.KEY_DAY), String.valueOf(date.getDayOfMonth()));
 
         Log.i(TAG, "onSaveInstanceState()");
-//        Log.i(TAG, String.valueOf(outState.get(String.valueOf(Constants.KEY_DOB_YEAR))));
     }
 
     public int dayCounter(int month)
@@ -182,12 +188,14 @@ public class MainActivity extends AppCompatActivity{
 ///////////// Go to Activity Section
 
     //validate age of user and then send bundle to ThankYouActivity
-    public void goToThankYouActivity(View view) {
+    public void goToProfileActivity(View view) {
 
         String first = editTextFirst.getText().toString();
         String last  = editTextLast.getText().toString();
         String email = editTextEmail.getText().toString();
         String user  = editTextUser.getText().toString();
+        String desc  = editTextDescription.getText().toString();
+        String occu  = editTextOccupation.getText().toString();
 
         int dobYear  = date.getYear();
         int dobMonth = date.getMonth();
@@ -241,7 +249,21 @@ public class MainActivity extends AppCompatActivity{
         {
             Toast toast = Toast.makeText(this, R.string.invalid_user, Toast.LENGTH_SHORT);
             toast.show();
-            Log.i(TAG, "user");
+            Log.i(TAG, "username");
+        }
+
+        else if(occu.equals(""))
+        {
+            Toast toast = Toast.makeText(this, R.string.invalid_occu, Toast.LENGTH_SHORT);
+            toast.show();
+            Log.i(TAG, "occupation");
+        }
+
+        else if(desc.equals(""))
+        {
+            Toast toast = Toast.makeText(this, R.string.invalid_desc, Toast.LENGTH_SHORT);
+            toast.show();
+            Log.i(TAG, "description");
         }
 
         else if(ageInYears < 18 ) //update for variation in days of month
@@ -253,17 +275,19 @@ public class MainActivity extends AppCompatActivity{
 
         else {
 
-            Intent intent = new Intent(MainActivity.this, ThankYouActivity.class); //go from 1st param activity to 2nd param activity
-//            Log.i(TAG, email);
+            Intent intent = new Intent(MainActivity.this, ProfileActivity.class); //go from 1st param activity to 2nd param activity
+
             //put verified user form info into intent to be sent to next activity
             intent.putExtra(Constants.KEY_FIRST_NAME, first);
             intent.putExtra(Constants.KEY_LAST_NAME, last);
             intent.putExtra(Constants.KEY_EMAIL, email);
             intent.putExtra(Constants.KEY_USERNAME, user);
-            intent.putExtra(Constants.KEY_AGE, ageInYears);
-            //intent.putExtra() verified date of birth
+            intent.putExtra(Constants.KEY_AGE, String.valueOf(ageInYears));
+            intent.putExtra(Constants.KEY_DESCRIPTION, desc);
+            intent.putExtra(Constants.KEY_OCCUPATION, occu);
 
             startActivity(intent);
+
         }
     }
 }
