@@ -1,5 +1,6 @@
 package com.example.ad340_hw1;
 
+import android.content.pm.ActivityInfo;
 import android.util.Log;
 import android.widget.DatePicker;
 
@@ -64,17 +65,28 @@ public class MainActivityTest {
 
 
     @Test
+    public void testScreenRotation()
+    {
+        testEnterFields(13,true,false);
+        mActivityRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        mActivityRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        hasTextOnScreen();
+    }
+
+    //passes in android studio, but fails in circleCI
+    //<date picker view is not displayed to user>
+    @Test
     public void testSuccessfulSignUp()
     {
         //test input all entries properly and submit
-        testEnterFields(13, true);
+        testEnterFields(13, true, true);
     }
 
     @Test
     public void testUnsuccessfulFirstName()
     {
         //Test first name w/ toast
-        testEnterFields(0, false);
+        testEnterFields(0, false, true);
 
         //check toast
         onView(withText(R.string.invalid_first))
@@ -86,7 +98,7 @@ public class MainActivityTest {
     public void testUnsuccessfulLastName()
     {
         //test last name
-        testEnterFields(7, true);
+        testEnterFields(7, true, true);
 
         onView(withText(R.string.invalid_last))
                 .inRoot(withDecorView(not(mActivityRule.getActivity()
@@ -97,7 +109,7 @@ public class MainActivityTest {
     public void testUnsuccessfulEmail()
     {
         //test email
-        testEnterFields(8, true);
+        testEnterFields(8, true, true);
 
         onView(withText(R.string.invalid_email))
                 .inRoot(withDecorView(not(mActivityRule.getActivity()
@@ -108,7 +120,7 @@ public class MainActivityTest {
     public void testUnsuccessfulUsername()
     {
         //test user
-        testEnterFields(9, true);
+        testEnterFields(9, true, true);
 
         onView(withText(R.string.invalid_user))
                 .inRoot(withDecorView(not(mActivityRule.getActivity()
@@ -119,7 +131,7 @@ public class MainActivityTest {
     public void testUnsuccessfulOccupation()
     {
         //test occupation
-        testEnterFields(10, true);
+        testEnterFields(10, true, true);
         onView(withText(R.string.invalid_occu))
                 .inRoot(withDecorView(not(mActivityRule.getActivity()
                         .getWindow().getDecorView()))).check(matches(isDisplayed()));
@@ -129,7 +141,7 @@ public class MainActivityTest {
     public void testUnsuccessfulDescription()
     {
         //test description
-        testEnterFields(11, true);
+        testEnterFields(11, true, true);
         onView(withText(R.string.invalid_desc))
                 .inRoot(withDecorView(not(mActivityRule.getActivity()
                         .getWindow().getDecorView()))).check(matches(isDisplayed()));
@@ -139,7 +151,7 @@ public class MainActivityTest {
     public void testUnsuccessfulDOB()
     {
         //test dob
-        testEnterFields(12, true);
+        testEnterFields(12, true, true);
 
         onView(withText(R.string.invalid_dob))
                 .inRoot(withDecorView(not(mActivityRule.getActivity()
@@ -157,7 +169,7 @@ public class MainActivityTest {
     //test successful and unsuccessful data input whether hasContent == true
     //can call single or multiple typeText depending on num param
 //    @Test
-    private void testEnterFields(int num, boolean hasContent)
+    private void testEnterFields(int num, boolean hasContent, boolean submit)
     {
         //edit text fields input up until number param
         if(num >= 7 || num == 0)
@@ -243,33 +255,22 @@ public class MainActivityTest {
             if(hasContent)
             {
                 onView(withClassName(Matchers.equalTo(DatePicker.class.getName())))
-                        .perform(PickerActions.setDate(1990, 1, 1), closeSoftKeyboard());
+                        .perform(ViewActions.scrollTo(), PickerActions.setDate(1990, 1, 1), closeSoftKeyboard());
             }
 
             //invalid birth date
             else{
                 onView(withClassName(Matchers.equalTo(DatePicker.class.getName())))
-                        .perform(PickerActions.setDate(2010, 1, 1), closeSoftKeyboard());
+                        .perform(ViewActions.scrollTo(), PickerActions.setDate(2010, 1, 1), closeSoftKeyboard());
             }
         }
 
         //scroll to bottom and submit data entry in form
-        onView(withId(R.id.btnSubmit)).perform(ViewActions.scrollTo(), click());
+        if(submit){
+            onView(withId(R.id.btnSubmit)).perform(ViewActions.scrollTo(), click());
+        }
+
     }
-
-
-//    @Test
-//    public void testDatePicker()
-//    {
-//        //datePicker field input
-////        onData(withId(R.id.dobDatePicker))
-////                .perform(doubleClick(), typeText("2000"), closeSoftKeyboard())
-////                .
-//        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(PickerActions.setDate(2010, 1, 1));
-////        onView(withId(R.id.btnSubmit)).perform(ViewActions.scrollTo(), click());
-////        onData(withId(R.id.dobDatePicker)).perform(PickerActions.setDate(2002, 10, 1));
-//    }
-
 
     //test the description editText view's max char limit of 50
 //    @Test
