@@ -21,9 +21,9 @@ public class ProfileActivityTest {
 //    @Rule
 //    public ActivityScenarioRule<ThankYouActivity> activityScenarioRule
 //            = new ActivityScenarioRule<>(ThankYouActivity.class);
-    @Rule
-    public ActivityTestRule<ProfileActivity> mActivityRule = new ActivityTestRule<>(
-            ProfileActivity.class);
+//    @Rule
+//    public ActivityTestRule<ProfileActivity> mActivityRule = new ActivityTestRule<>(
+//            ProfileActivity.class);
 
     //checks that text on screen matches myText
 //    @Test

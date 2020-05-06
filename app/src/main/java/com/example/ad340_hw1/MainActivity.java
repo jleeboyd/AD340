@@ -249,7 +249,21 @@ public class MainActivity extends AppCompatActivity{
         {
             Toast toast = Toast.makeText(this, R.string.invalid_user, Toast.LENGTH_SHORT);
             toast.show();
-            Log.i(TAG, "user");
+            Log.i(TAG, "username");
+        }
+
+        else if(occu.equals(""))
+        {
+            Toast toast = Toast.makeText(this, R.string.invalid_occu, Toast.LENGTH_SHORT);
+            toast.show();
+            Log.i(TAG, "occupation");
+        }
+
+        else if(desc.equals(""))
+        {
+            Toast toast = Toast.makeText(this, R.string.invalid_desc, Toast.LENGTH_SHORT);
+            toast.show();
+            Log.i(TAG, "description");
         }
 
         else if(ageInYears < 18 ) //update for variation in days of month
