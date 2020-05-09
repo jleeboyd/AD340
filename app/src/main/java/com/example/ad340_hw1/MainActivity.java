@@ -12,6 +12,9 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity{
@@ -167,18 +170,6 @@ public class MainActivity extends AppCompatActivity{
         Log.i(TAG, "onSaveInstanceState()");
     }
 
-    public int dayCounter(int month)
-    {
-        int[] months = {31,28,31,30,31,30,31,31,30,31,30,31}; //days in months
-        int sumDays = 0;
-        for (int index = 0; index < month; index++) // count sum of days in months up to chosen m
-        {
-            sumDays += months[index];
-        }
-//        Log.i(TAG, String.valueOf(sumDays));
-        return sumDays;
-
-    }
 
     public static boolean isValidEmail(CharSequence target) {
         Log.i(TAG,String.valueOf(target)+": email");
@@ -188,7 +179,7 @@ public class MainActivity extends AppCompatActivity{
 ///////////// Go to Activity Section
 
     //validate age of user and then send bundle to ThankYouActivity
-    public void goToProfileActivity(View view) {
+    public void goToTabActivity(View view) {
 
         String first = editTextFirst.getText().toString();
         String last  = editTextLast.getText().toString();
@@ -197,28 +188,28 @@ public class MainActivity extends AppCompatActivity{
         String desc  = editTextDescription.getText().toString();
         String occu  = editTextOccupation.getText().toString();
 
+        //calculate age of user
         int dobYear  = date.getYear();
         int dobMonth = date.getMonth();
         int dobDay   = date.getDayOfMonth();
 
+        Log.i(TAG, String.valueOf(dobYear)+": birthyear");
+        Log.i(TAG, String.valueOf(dobMonth)+": birthmonth");
+        Log.i(TAG, String.valueOf(dobDay)+": birthday");
 
-        //calculate age of user
-        int dateDays = (dobYear * 365) + dayCounter(dobMonth) + dobDay;
+        LocalDate today = LocalDate.now();
+        LocalDate birthday = LocalDate.of(dobYear, dobMonth, dobDay);
+        Log.i(TAG, String.valueOf(birthday)+": birthday");
 
-        int currentDays = (year * 365) + dayCounter(month) + day;
+        Period p = Period.between(birthday, today);
 
-        int ageInDays = currentDays - dateDays;
+        int ageInYears = p.getYears();
 
-        double ageInYears = ageInDays / 365.0;
         Log.i(TAG, String.valueOf(ageInYears)+": age");
 
         CharSequence mySequence = email;
         Log.i(TAG, email);
 
-
-//        int year = Calendar.getInstance().get(Calendar.YEAR);
-//        int month = Calendar.getInstance().get(Calendar.MONTH);
-//        int day = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
 
 
 
@@ -266,16 +257,16 @@ public class MainActivity extends AppCompatActivity{
             Log.i(TAG, "description");
         }
 
-        else if(ageInYears < 18 ) //update for variation in days of month
+        else if(ageInYears < 18) //update for variation in days of month
         {
             Toast toast = Toast.makeText(this, R.string.invalid_dob, Toast.LENGTH_SHORT);
             toast.show();
-            Log.i(TAG, String.valueOf(ageInYears));
+            Log.i(TAG, String.valueOf(ageInYears) + ": Invalid Age");
         }
 
         else {
 
-            Intent intent = new Intent(MainActivity.this, ProfileActivity.class); //go from 1st param activity to 2nd param activity
+            Intent intent = new Intent(MainActivity.this, TabActivity.class); //go from 1st param activity to 2nd param activity
 
             //put verified user form info into intent to be sent to next activity
             intent.putExtra(Constants.KEY_FIRST_NAME, first);

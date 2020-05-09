@@ -26,7 +26,7 @@ public class ProfileActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
+        setContentView(R.layout.fragment_profile);
 
         textViewFirst = findViewById(R.id.textViewProfileFirstName);
         textViewLast = findViewById(R.id.textViewProfileLastName);
@@ -36,7 +36,7 @@ public class ProfileActivity extends AppCompatActivity {
         textViewDescription = findViewById(R.id.textViewProfileDescription);
         textViewOccupation = findViewById(R.id.textViewProfileOccupation);
 
-        button = findViewById(R.id.BtnBack);
+//        button = findViewById(R.id.BtnBack);
 
         Intent intent = getIntent();
         Bundle b = intent.getExtras();
