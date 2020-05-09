@@ -137,15 +137,15 @@
             android:contentDescription="@string/edit" />
 
 
-        <Button
-            android:id="@+id/BtnBack"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="goToMainActivity"
-            android:text="@string/symbol"
+<!--        <Button-->
+<!--            android:id="@+id/BtnBack"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:onClick="goToMainActivity"-->
+<!--            android:text="@string/symbol"-->
 
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

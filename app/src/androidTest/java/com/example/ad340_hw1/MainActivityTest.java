@@ -79,6 +79,8 @@ public class MainActivityTest {
     {
         //test input all entries properly and submit
         testEnterFields(13, true, true);
+//        TabActivityTest TabTest = new TabActivityTest();
+//        TabTest();
     }
 
     @Test
@@ -254,13 +256,13 @@ public class MainActivityTest {
             if(hasContent)
             {
                 onView(withClassName(Matchers.equalTo(DatePicker.class.getName())))
-                        .perform(ViewActions.scrollTo(), PickerActions.setDate(1990, 1, 1), closeSoftKeyboard());
+                        .perform(ViewActions.scrollTo(), PickerActions.setDate(2000, 2, 1), closeSoftKeyboard());
             }
 
             //invalid birth date
             else{
                 onView(withClassName(Matchers.equalTo(DatePicker.class.getName())))
-                        .perform(ViewActions.scrollTo(), PickerActions.setDate(2010, 1, 1), closeSoftKeyboard());
+                        .perform(ViewActions.scrollTo(), PickerActions.setDate(2010, 2, 1), closeSoftKeyboard());
             }
         }
 
