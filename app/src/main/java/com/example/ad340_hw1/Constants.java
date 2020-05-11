@@ -8,6 +8,7 @@ public class Constants {
     static final String KEY_AGE = "@string/e";
     static final String KEY_DESCRIPTION = "@string/f";
     static final String KEY_OCCUPATION = "@string/g";
+    static final String TEST = "@string/thank_you";
 
     static final int KEY_DOB_YEAR = 0;
     static final int KEY_DOB_MONTH = 1;

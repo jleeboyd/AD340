@@ -28,7 +28,13 @@ public class ProfileFragment extends Fragment {
     private TextView textViewDescription;
     private TextView textViewOccupation;
 
-//    private Button button;
+    String user;
+    String first;
+    String last;
+    String email;
+    String age;
+    String desc;
+    String occu;
 
     @Override
     public void onAttach(Context context) {
@@ -37,18 +43,52 @@ public class ProfileFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
+
+
+        View view = inflater.inflate(R.layout.fragment_profile, container, false);
+        Bundle bundle = getArguments();
+
+        if (bundle != null) {
+
+            //assign textviews with view inflater. Outside of onCreateView use getView()
+            textViewUser  = view.findViewById(R.id.textViewProfileUsername);
+            textViewFirst = view.findViewById(R.id.textViewProfileFirstName);
+            textViewLast  = view.findViewById(R.id.textViewProfileLastName);
+            textViewEmail = view.findViewById(R.id.textViewProfileEmail);
+            textViewAge   = view.findViewById(R.id.textViewProfileAge);
+            textViewDescription = view.findViewById(R.id.textViewProfileDescription);
+            textViewOccupation  = view.findViewById(R.id.textViewProfileOccupation);
+
+            //grab signup data from bundle
+            user  = bundle.getString(Constants.KEY_USERNAME);
+            first = bundle.getString(Constants.KEY_FIRST_NAME);
+            last  = bundle.getString(Constants.KEY_LAST_NAME);
+            email = bundle.getString(Constants.KEY_EMAIL);
+            age   = bundle.getString(Constants.KEY_AGE);
+            desc  = bundle.getString(Constants.KEY_DESCRIPTION);
+            occu  = bundle.getString(Constants.KEY_OCCUPATION);
+
+            //set text views to user signup info
+            textViewUser.setText(user);
+            textViewFirst.setText(first);
+            textViewLast.setText(last);
+            textViewEmail.setText(email);
+            textViewAge.setText(age);
+            textViewDescription.setText(desc);
+            textViewOccupation.setText(occu);
+
+            Log.i(TAG, "bundle is not null");
+//            Log.i(TAG, bundle.getString(Constants.KEY_USERNAME) + " fragment");
+        }
+
+        else {
+            Log.i(TAG, "bundle is null");
+        }
+
         Log.i(TAG, "onCreateView()");
 
-//        textViewFirst = getView().findViewById(R.id.textViewProfileFirstName);
-//        Intent intent = getActivity().getIntent();
-//        Bundle b = intent.getExtras();
-//
-//
-//        textViewFirst.setText(b.getString(Constants.KEY_FIRST_NAME));
-
-        return inflater.inflate(R.layout.fragment_profile, null);
-
+        return view; //inflater.inflate(R.layout.fragment_profile, null, true);
     }
 
 
@@ -63,55 +103,27 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.fragment_profile);
-
-
-//        textViewLast = getView().findViewById(R.id.textViewProfileLastName);
-//        textViewUser = getView().findViewById(R.id.textViewProfileUsername);
-//        textViewEmail = getView().findViewById(R.id.textViewProfileEmail);
-//        textViewAge = getView().findViewById(R.id.textViewProfileAge);
-//        textViewDescription = getView().findViewById(R.id.textViewProfileDescription);
-//        textViewOccupation = getView().findViewById(R.id.textViewProfileOccupation);
-
-
-//        Intent intent = getActivity().getIntent();
-//        Bundle b = intent.getExtras();
-//
-//
-//        textViewFirst.setText(b.getString(Constants.KEY_FIRST_NAME));
-//        textViewLast.setText(b.getString(Constants.KEY_LAST_NAME));
-//        textViewUser.setText(b.getString(Constants.KEY_USERNAME));
-//        textViewEmail.setText(b.getString(Constants.KEY_EMAIL));
-//        textViewAge.setText(b.getString(Constants.KEY_AGE));
-//        textViewDescription.setText(b.getString(Constants.KEY_DESCRIPTION));
-//        textViewOccupation.setText(b.getString(Constants.KEY_OCCUPATION));
 
         Log.i(TAG, "onCreate()");
+
     }
 
-
-//    @Override
-//    public void onRestart(){
-//        super.onRestart(); //override default onStart() and obtain from AppCompatActivity (parent) logic.
-//        Log.i(TAG,"onRestart()");
-//    }
-
     @Override
-    public void onStart(){
+    public void onStart() {
         super.onStart(); //override default onStart() and obtain from AppCompatActivity (parent) logic.
-        Log.i(TAG,"onStart()");
+        Log.i(TAG, "onStart()");
     }
 
     @Override
-    public void onResume(){
+    public void onResume() {
         super.onResume();
-        Log.i(TAG,"onResume()");
+        Log.i(TAG, "onResume()");
     }
 
     @Override
-    public void onPause(){
+    public void onPause() {
         super.onPause();
-        Log.i(TAG,"onPause()");
+        Log.i(TAG, "onPause()");
     }
 
     @Override
@@ -123,7 +135,7 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        Log.i(TAG,"onDestroyView()");
+        Log.i(TAG, "onDestroyView()");
     }
 
     @Override
@@ -137,58 +149,4 @@ public class ProfileFragment extends Fragment {
         super.onDetach();
         Log.i(TAG, "onDetach()");
     }
-
-//        public void goToMainActivity(View view) {
-////        Intent intent = new Intent(ProfileActivity.this, MainActivity.class);
-////        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); //do no onCreate() main again w/ manifest
-////        startActivity(intent);
-//            finish(); //to onDestroy() current activity.
-//        }
-//    }
-
-
-//    @Override
-//    public void onSaveInstanceState(Bundle outState) {
-//        super.onSaveInstanceState(outState);
-//
-//        Log.i(TAG, "onSaveInstanceState()");
-////        outState.putString(Constants.KEY_FIRST_NAME, textView.getText().toString());
-////        outState.putString(Constants.KEY_LAST_NAME,  textView.getText().toString());
-////        outState.putString(Constants.KEY_EMAIL,      textView.getText().toString());
-////        outState.putString(Constants.KEY_USERNAME,   textView.getText().toString());
-////        outState.putString(Constants.KEY_OCCUPATION,    textView.getText().toString());
-////        outState.putString(Constants.KEY_DESCRIPTION,   textView.getText().toString());
-////        outState.putString(Constants.KEY_AGE,           textView.getText().toString());
-//
-//        Log.i(TAG, "onSaveInstanceState()");
-//    }
-
-//    @Override
-//    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-//        super.onRestoreInstanceState(savedInstanceState);
-//
-////        if (savedInstanceState.containsKey(Constants.KEY_USERNAME)) {
-////            textViewUser.setText((String)savedInstanceState.get(Constants.KEY_USERNAME));
-////        }
-////        if (savedInstanceState.containsKey(Constants.KEY_FIRST_NAME)) {
-////            textViewFirst.setText((String)savedInstanceState.get(Constants.KEY_FIRST_NAME));
-////        }
-////        if (savedInstanceState.containsKey(Constants.KEY_LAST_NAME)) {
-////            textViewLast.setText((String)savedInstanceState.get(Constants.KEY_LAST_NAME));
-////        }
-////        if (savedInstanceState.containsKey(Constants.KEY_EMAIL)) {
-////            textViewEmail.setText((String)savedInstanceState.get(Constants.KEY_EMAIL));
-////        }
-////        if (savedInstanceState.containsKey(Constants.KEY_DESCRIPTION)) {
-////            textViewDesc.setText((String)savedInstanceState.get(Constants.KEY_DESCRIPTION));
-////        }
-////        if (savedInstanceState.containsKey(Constants.KEY_OCCUPATION)) {
-////            textViewOccu.setText((String)savedInstanceState.get(Constants.KEY_OCCUPATION));
-////        }
-////        if (savedInstanceState.containsKey(Constants.KEY_AGE)) {
-////            textViewAge.setText((String)savedInstanceState.get(Constants.KEY_AGE));
-////        }
-//
-//        Log.i(TAG, "onRestoreInstanceState()");
-//    }
 }
