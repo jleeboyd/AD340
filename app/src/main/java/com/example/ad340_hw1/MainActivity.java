@@ -41,8 +41,6 @@ public class MainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        textView = findViewById(R.id.textViewInfo);
-//        textView = findViewById(R.id.textViewSignup);
 
         //set views
         editTextFirst = findViewById(R.id.editTextFirstName);
@@ -60,8 +58,6 @@ public class MainActivity extends AppCompatActivity{
         month = now.get(Calendar.MONTH);
         day   = now.get(Calendar.DAY_OF_MONTH);
 
-
-//        button = findViewById(R.id.btnSubmit);
 
         Log.i(TAG, "onCreate()"); //logs successful onCreate lifecycle function to the console.
     }

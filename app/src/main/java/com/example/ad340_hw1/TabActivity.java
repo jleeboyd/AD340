@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Adapter;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -21,8 +23,6 @@ import java.util.List;
 
 public class TabActivity extends AppCompatActivity {
 
-//    private MatchesFragment matches;
-
     private static final String TAG = TabActivity.class.getSimpleName();
 
 
@@ -31,14 +31,12 @@ public class TabActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tab);
 
-//          matches = findViewById(R.id.fragment_matches)
-//        MatchesFragment matches = new MatchesFragment();
-//        ProfileFragment profile = new ProfileFragment();
-//        SettingsFragment settings = new SettingsFragment();
+        Intent intent = getIntent();
+        Bundle b = intent.getExtras();
 
         // Setting ViewPager for tabs
         ViewPager viewpager = findViewById(R.id.viewpager);
-        setupViewPager(viewpager);
+        setupViewPager(viewpager, b);
 
         //toolbar already given due to app creation type
         TabLayout tabs = findViewById(R.id.tabs);
@@ -48,17 +46,29 @@ public class TabActivity extends AppCompatActivity {
 //        tabs.addTab(tabs.newTab().setText("PROFILE"));
 //        tabs.addTab(tabs.newTab().setText("SETTINGS"));
 
-//        Intent intent = getIntent();
-//        Bundle b = intent.getExtras();
+        //pass bundle from signup to profile fragment
+
+
+        //testing bundle
+//        Bundle testBundle = new Bundle();
+//        testBundle.putString(Constants.TEST, "Hi there");
+        //
+
+//        ProfileFragment profileFragment = new ProfileFragment();
+
+        Log.i(TAG, b.getString(Constants.KEY_USERNAME)+" tabActivity");
 
         Log.i(TAG, "onCreate()");
     }
 
     //add fragments to tabs
-    private void setupViewPager(ViewPager viewpager) {
+    private void setupViewPager(ViewPager viewpager, Bundle b) {
         Adapter adapter = new Adapter(getSupportFragmentManager());
         adapter.addFragment(new MatchesFragment(), "MATCHES");
         adapter.addFragment(new ProfileFragment(), "PROFILE");
+        //add bundle to fragment
+        adapter.getItem(1).setArguments(b);
+        Log.i(TAG, b.getString(Constants.KEY_USERNAME)+"setup");
         adapter.addFragment(new SettingsFragment(), "SETTINGS");
         viewpager.setAdapter(adapter);
     }
