@@ -1,8 +1,9 @@
-AD 340
+# AD 340
 <br/>
-Mobile Applications Dating App
+## Mobile Applications Dating App
 <br/>
-Written in Java for machines running Android 10
+Language: Java
+Version: Android 10
 <br/>
 <br/>
 
