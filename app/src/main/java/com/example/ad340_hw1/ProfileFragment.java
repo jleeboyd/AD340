@@ -18,7 +18,7 @@ import androidx.fragment.app.Fragment;
 
 public class ProfileFragment extends Fragment {
 
-    private static final String TAG = ProfileActivity.class.getSimpleName();
+    private static final String TAG = ProfileFragment.class.getSimpleName();
 
     private TextView textViewFirst;
     private TextView textViewLast;
