@@ -216,7 +216,7 @@ public class MainActivityTest {
         {
             if (hasContent)
             {
-                onView(withId(R.id.editTextUsername)).perform(typeText("El Trigre"));
+                onView(withId(R.id.editTextUsername)).perform(typeText("El Tigre"));
             }
 
             else {
