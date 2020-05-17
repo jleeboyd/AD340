@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Adapter;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
@@ -31,32 +32,41 @@ public class TabActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tab);
 
+
         Intent intent = getIntent();
         Bundle b = intent.getExtras();
 
-        // Setting ViewPager for tabs
-        ViewPager viewpager = findViewById(R.id.viewpager);
-        setupViewPager(viewpager, b);
+        if (b != null)
+        {
+            // Setting ViewPager for tabs
+            ViewPager viewpager = findViewById(R.id.viewpager);
+            setupViewPager(viewpager, b);
 
-        //toolbar already given due to app creation type
-        TabLayout tabs = findViewById(R.id.tabs);
-        tabs.setupWithViewPager(viewpager);
+            //toolbar already given due to app creation type
+            TabLayout tabs = findViewById(R.id.tabs);
+            tabs.setupWithViewPager(viewpager);
+
+            Log.i(TAG, b.getString(Constants.KEY_USERNAME)+" tabActivity");
+        }
+
+        //for single activity testing
+        else{
+
+            ViewPager viewpager = findViewById(R.id.viewpager);
+            setupViewPager(viewpager, b);
+
+            //toolbar already given due to app creation type
+            TabLayout tabs = findViewById(R.id.tabs);
+            tabs.setupWithViewPager(viewpager);
+        }
+
+
 
 //        tabs.addTab(tabs.newTab().setText("MATCHES"));
 //        tabs.addTab(tabs.newTab().setText("PROFILE"));
 //        tabs.addTab(tabs.newTab().setText("SETTINGS"));
 
-        //pass bundle from signup to profile fragment
 
-
-        //testing bundle
-//        Bundle testBundle = new Bundle();
-//        testBundle.putString(Constants.TEST, "Hi there");
-        //
-
-//        ProfileFragment profileFragment = new ProfileFragment();
-
-        Log.i(TAG, b.getString(Constants.KEY_USERNAME)+" tabActivity");
 
         Log.i(TAG, "onCreate()");
     }
@@ -66,9 +76,10 @@ public class TabActivity extends AppCompatActivity {
         Adapter adapter = new Adapter(getSupportFragmentManager());
         adapter.addFragment(new MatchesFragment(), "MATCHES");
         adapter.addFragment(new ProfileFragment(), "PROFILE");
+
         //add bundle to fragment
         adapter.getItem(1).setArguments(b);
-        Log.i(TAG, b.getString(Constants.KEY_USERNAME)+"setup");
+//        Log.i(TAG, b.getString(Constants.KEY_USERNAME)+"setup");
         adapter.addFragment(new SettingsFragment(), "SETTINGS");
         viewpager.setAdapter(adapter);
     }
@@ -84,6 +95,7 @@ public class TabActivity extends AppCompatActivity {
 
         @Override
         public Fragment getItem(int position) {
+
             return mFragmentList.get(position);
         }
 

@@ -12,6 +12,8 @@ import androidx.test.espresso.contrib.PickerActions;
 import androidx.test.rule.ActivityTestRule;
 
 import org.hamcrest.Matchers;
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -41,14 +43,24 @@ public class MainActivityTest {
 //    @Rule
 //    public ActivityScenarioRule<MainActivity> activityScenarioRule
 //            = new ActivityScenarioRule<>(MainActivity.class);
+    public boolean intro = true;
+
     @Rule
-    public ActivityTestRule<MainActivity> mActivityRule = new ActivityTestRule<>(
-            MainActivity.class);
+    public ActivityTestRule<IntroActivity> mActivityRule = new ActivityTestRule<>(
+            IntroActivity.class, true, true);
+//    @Rule
+//    public ActivityTestRule<MainActivity> mActivityRuleMain = new ActivityTestRule<>(
+//            MainActivity.class, true);
 
     private static final String TAG = MainActivityTest.class.getSimpleName();
 
-    //checks that text on screen matches myText
-    @Test
+
+    public void clickIntroSignUp()
+    {
+        IntroActivityTest IntroTest = new IntroActivityTest();
+        IntroTest.clickSignUp();
+    }
+
     public void hasTextOnScreen()
     {
         onView(withId(R.id.textViewInfo))
@@ -59,10 +71,25 @@ public class MainActivityTest {
 
         onView(withId(R.id.textViewDOB))
                 .check(matches(withText(R.string.dob)));
-
     }
 
+    //checks that text on screen matches myText
+    @Test
+    public void hasTextOnScreenClick()
+    {
+            clickIntroSignUp();
 
+            onView(withId(R.id.textViewInfo))
+                    .check(matches(withText(R.string.my_text)));
+
+            onView(withId(R.id.textViewSignup))
+                    .check(matches(withText(R.string.sign_up)));
+
+            onView(withId(R.id.textViewDOB))
+                    .check(matches(withText(R.string.dob)));
+    }
+
+    //THIS TEST FAILES DUE TO HASTEXTONSCREEN CALL THAT CALLS ANOTHER INTRO SIGNUP BUTTON CLICK
     @Test
     public void testScreenRotation()
     {
@@ -172,6 +199,7 @@ public class MainActivityTest {
 //    @Test
     private void testEnterFields(int num, boolean hasContent, boolean submit)
     {
+        clickIntroSignUp();
         //edit text fields input up until number param
         if(num >= 7 || num == 0)
         {
@@ -203,7 +231,7 @@ public class MainActivityTest {
         {
             if (hasContent)
             {
-                onView(withId(R.id.editTextEmail)).perform(typeText("ELTigre@yahoo.com"));
+                onView(withId(R.id.editTextEmail)).perform(typeText("ELTigre@greendalecollege.edu"));
             }
 
             else {
@@ -242,7 +270,7 @@ public class MainActivityTest {
         {
             if (hasContent)
             {
-                onView(withId(R.id.editTextDescription)).perform(typeText("Lookin for love"), closeSoftKeyboard());
+                onView(withId(R.id.editTextDescription)).perform(typeText("I am a man who can never die"), closeSoftKeyboard());
             }
 
             else {

@@ -6,4 +6,5 @@
     <color name="black">#010203</color>
     <color name="white">#FFFFFF</color>
     <color name="light_blue">#33FFCC</color>
+    <color name="sky_blue">#99CCCC</color>
 </resources>

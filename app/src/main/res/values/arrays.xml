@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="match_name" >
+        <item>@string/dean</item>
+        <item>@string/troy_abed</item>
+        <item>@string/britta</item>
+        <item>@string/magnitude</item>
+    </string-array>
+    <string-array name="match_picture" >
+        <item>@drawable/dean</item>
+        <item>@drawable/troy_abed</item>
+        <item>@drawable/britta</item>
+        <item>@drawable/magnitude</item>
+    </string-array>
+    <string-array name="match_desc" >
+        <item>@string/desc_dean</item>
+        <item>@string/desc_troy_abed</item>
+        <item>@string/desc_britta</item>
+        <item>@string/desc_magnitude</item>
+    </string-array>
+
+
+
+</resources>
