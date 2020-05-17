@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">AD340_HW4</string>
-    <string name="my_text">Boyd,Jack 5/8/2020</string>
+    <string name="app_name">AD340_HW5</string>
+    <string name="my_text">Boyd,Jack 5/15/2020</string>
 
     <string name="click_me">Click Me!</string>
     <string name="ad340">AD340 App</string>
@@ -50,4 +50,16 @@
     <string name="settings">SETTINGS</string>
 
     <string name="symbol"><![CDATA[<<]]></string>
+    <string name="like">Like</string>
+
+    <string name="britta">Britta</string>
+    <string name="dean">Dean Pelton</string>
+    <string name="troy_abed">Troy and Abed</string>
+    <string name="magnitude">Magnitude</string>
+
+    <string name="desc_dean">I\'m learning Excel</string>
+    <string name="desc_troy_abed">Troy and Abed in the Morning</string>
+    <string name="desc_magnitude">Pop Pop!</string>
+    <string name="desc_britta">I lived in New York</string>
+    <string name="appTitle">Greendale Friend Finder</string>
 </resources>
