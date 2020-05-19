@@ -37,7 +37,7 @@ public class MatchesFragment extends Fragment {
     }
 
     //cardview
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder {
         public ImageView picture;
         public TextView name;
         public TextView description;
@@ -61,7 +61,7 @@ public class MatchesFragment extends Fragment {
 //                    Resources resources = context.getResources();
 //                    String item = R.array.match_name.getStringArray(itemPosition);
 
-                    Toast toast = Toast.makeText(v.getContext(), "You Liked " + likeBtnMsg, Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(v.getContext(), likeBtnMsg, Toast.LENGTH_SHORT);
                     toast.show();
                 }
             });
@@ -92,7 +92,7 @@ public class MatchesFragment extends Fragment {
 
     //cardview
     //recyclerview adapter instance
-    public static class ContentAdapter extends RecyclerView.Adapter<ViewHolder> {
+    public class ContentAdapter extends RecyclerView.Adapter<ViewHolder> {
         // Set numbers of List in RecyclerView.
         private static final int LENGTH = 4;
         private final String[] mNames;
@@ -125,9 +125,11 @@ public class MatchesFragment extends Fragment {
             holder.name.setText(mNames[position % mNames.length]);
             holder.description.setText(mDesc[position % mDesc.length]);
 
-            StringBuilder likeBtn = new StringBuilder(holder.name.getText().toString());
+            StringBuilder likeBtnMsgName = new StringBuilder(getString(R.string.you_liked));
 
-            holder.likeBtnMsg = likeBtn.toString();
+            likeBtnMsgName.append(holder.name.getText().toString());
+
+            holder.likeBtnMsg = likeBtnMsgName.toString();
             Log.i(TAG, "onBindViewHolder()" + position);
 
         }

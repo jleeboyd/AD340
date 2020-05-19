@@ -62,4 +62,10 @@
     <string name="desc_magnitude">Pop Pop!</string>
     <string name="desc_britta">I lived in New York</string>
     <string name="appTitle">Greendale Friend Finder</string>
+    <string name="testFirstName">Ben</string>
+    <string name="testLastName">Chang</string>
+    <string name="testEmail">ELTigre@greendalecollege.edu</string>
+    <string name="testOccupation">Spanish Teacher</string>
+    <string name="testDescription">I am a man who can never die</string>
+    <string name="you_liked">"You Liked "</string>
 </resources>
