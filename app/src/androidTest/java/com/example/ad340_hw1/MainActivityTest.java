@@ -46,8 +46,8 @@ public class MainActivityTest {
     public boolean intro = true;
 
     @Rule
-    public ActivityTestRule<IntroActivity> mActivityRule = new ActivityTestRule<>(
-            IntroActivity.class, true, true);
+    public ActivityTestRule<MainActivity> mActivityRule = new ActivityTestRule<>(
+            MainActivity.class, true, true);
 //    @Rule
 //    public ActivityTestRule<MainActivity> mActivityRuleMain = new ActivityTestRule<>(
 //            MainActivity.class, true);
@@ -55,11 +55,11 @@ public class MainActivityTest {
     private static final String TAG = MainActivityTest.class.getSimpleName();
 
 
-    public void clickIntroSignUp()
-    {
-        IntroActivityTest IntroTest = new IntroActivityTest();
-        IntroTest.clickSignUp();
-    }
+//    public void clickIntroSignUp()
+//    {
+//        IntroActivityTest IntroTest = new IntroActivityTest();
+//        IntroTest.clickSignUp();
+//    }
 
     public void hasTextOnScreen()
     {
@@ -73,11 +73,26 @@ public class MainActivityTest {
                 .check(matches(withText(R.string.dob)));
     }
 
+    public void hasTextOnScreenRotation()
+    {
+        onView(withId(R.id.editTextFirstName))
+                .check(matches(withText(R.string.testFirstName)));
+        onView(withId(R.id.editTextLastName))
+                .check(matches(withText(R.string.testLastName)));
+        onView(withId(R.id.editTextEmail))
+                .check(matches(withText(R.string.testEmail)));
+        onView(withId(R.id.editTextDescription))
+                .check(matches(withText(R.string.testDescription)));
+        onView(withId(R.id.editTextOccupation))
+                .check(matches(withText(R.string.testOccupation)));
+
+    }
+
     //checks that text on screen matches myText
     @Test
     public void hasTextOnScreenClick()
     {
-            clickIntroSignUp();
+//            clickIntroSignUp();
 
             onView(withId(R.id.textViewInfo))
                     .check(matches(withText(R.string.my_text)));
@@ -89,14 +104,14 @@ public class MainActivityTest {
                     .check(matches(withText(R.string.dob)));
     }
 
-    //THIS TEST FAILES DUE TO HASTEXTONSCREEN CALL THAT CALLS ANOTHER INTRO SIGNUP BUTTON CLICK
+    //onRestore/onSave not being covered. screen may not actually be rotating
     @Test
     public void testScreenRotation()
     {
         testEnterFields(13,true,false);
-        mActivityRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-        mActivityRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        hasTextOnScreen();
+        mActivityRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
+//        mActivityRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        hasTextOnScreenRotation();
     }
 
     //passes in android studio, but fails in circleCI
@@ -199,12 +214,13 @@ public class MainActivityTest {
 //    @Test
     private void testEnterFields(int num, boolean hasContent, boolean submit)
     {
-        clickIntroSignUp();
+//        clickIntroSignUp();
         //edit text fields input up until number param
         if(num >= 7 || num == 0)
         {
             if(hasContent)
             {
+//                onView(withId(R.id.editTextFirstName)).perform(typeText("Ben"));
                 onView(withId(R.id.editTextFirstName)).perform(typeText("Ben"));
             }
 

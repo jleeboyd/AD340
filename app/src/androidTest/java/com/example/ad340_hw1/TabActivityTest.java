@@ -20,8 +20,8 @@ import static androidx.test.espresso.matcher.ViewMatchers.withText;
 @RunWith(AndroidJUnit4.class)
 public class TabActivityTest {
     @Rule
-    public ActivityTestRule<IntroActivity> mActivityRule = new ActivityTestRule<>(
-            IntroActivity.class, true, true);
+    public ActivityTestRule<MainActivity> mActivityRule = new ActivityTestRule<>(
+            MainActivity.class, true, true);
 
     private static final String TAG = TabActivityTest.class.getSimpleName();
 

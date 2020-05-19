@@ -208,8 +208,6 @@ public class MainActivity extends AppCompatActivity{
 
 
 
-
-
         //validate user form info is correct
         if(first.equals(""))
         {
