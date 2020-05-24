@@ -2,8 +2,6 @@ package com.example.ad340_hw1;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.content.res.TypedArray;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,16 +17,23 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class MatchesFragment extends Fragment {
+import com.example.ad340_hw1.models.MatchList;
+import com.example.ad340_hw1.viewmodels.FirebaseMatchesViewModel;
+
+import java.util.ArrayList;
+
+public class MatchesFragment extends Fragment {// implements ClickLikeListener{
 
     private static final String TAG = MatchesFragment.class.getSimpleName();
-//    Context context;
+    private FirebaseMatchesViewModel viewModel;
+    private ArrayList<MatchList> matchList;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         RecyclerView recyclerView = (RecyclerView) inflater.inflate(R.layout.recycler_view, container, false);
         //new up customer contentAdapter class
         ContentAdapter adapter = new ContentAdapter(recyclerView.getContext());
+
         recyclerView.setAdapter(adapter);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -36,7 +41,12 @@ public class MatchesFragment extends Fragment {
 
     }
 
-    //cardview
+//    @Override
+//    public void onClickLike(MatchItem match) {
+//        FirebaseMatchesViewModel.updateLikedMatches(match);
+//    }
+
+    //cardview with firestore data not resourses
     public class ViewHolder extends RecyclerView.ViewHolder {
         public ImageView picture;
         public TextView name;
@@ -66,27 +76,6 @@ public class MatchesFragment extends Fragment {
                 }
             });
 
-            //onclick
-//            itemView.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    Context context = v.getContext();
-//                    Intent intent = new Intent(context, TabActivity.class);
-//                    intent.putExtra(TabActivity.EXTRA_POSITION, getAdapterPosition());
-//                    context.startActivity(intent);
-//                }
-//            });
-//            // Adding Snackbar to Action Button inside card
-//            Button button = (Button)itemView.findViewById(R.id.action_button);
-//            button.setOnClickListener(new View.OnClickListener(){
-//                @Override
-//                public void onClick(View v) {
-//                    Snackbar.make(v, "Action is pressed",
-//                            Snackbar.LENGTH_LONG).show();
-//                }
-//            })}
-            //like button w/ toast
-
         }
     }
 
@@ -94,22 +83,25 @@ public class MatchesFragment extends Fragment {
     //recyclerview adapter instance
     public class ContentAdapter extends RecyclerView.Adapter<ViewHolder> {
         // Set numbers of List in RecyclerView.
-        private static final int LENGTH = 4;
-        private final String[] mNames;
-        private final String[] mDesc;
-        private final Drawable[] mPictures;
+        private static final int LENGTH = 6;
+//        private final String[] mNames;
+//        private final String[] mDesc;
+//        private final Drawable[] mPictures;
 
-        public ContentAdapter(Context context) {
+        private ArrayList<MatchList> matchList;
+
+
+        public ContentAdapter(Context context, ArrayList<MatchList> matchList) {
             Resources resources = context.getResources();
-            mNames = resources.getStringArray(R.array.match_name);
-            mDesc = resources.getStringArray(R.array.match_desc);
-            TypedArray a = resources.obtainTypedArray(R.array.match_picture);
-            mPictures = new Drawable[a.length()];
+//            mNames = resources.getStringArray(R.array.match_name);
+//            mDesc = resources.getStringArray(R.array.match_desc);
+//            TypedArray a = resources.obtainTypedArray(R.array.match_picture);
+//            mPictures = new Drawable[a.length()];
 
-            for (int i = 0; i < mPictures.length; i++) {
-                mPictures[i] = a.getDrawable(i);
-            }
-            a.recycle();
+//            for (int i = 0; i < mPictures.length; i++) {
+//                mPictures[i] = a.getDrawable(i);
+//            }
+//            a.recycle();
         }
 
         @NonNull
@@ -140,11 +132,7 @@ public class MatchesFragment extends Fragment {
         }
     }
 
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        Log.i(TAG, "onActivityCreated()");
-    }
+
 
     //for fragments, need to use getView().findViewById ;
     //getActivity().getIntent();
@@ -152,12 +140,23 @@ public class MatchesFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+//!!!!!!!!!        //hardcoded string!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        if(getArguments() != null) {
+            matchList = getArguments().getParcelableArrayList("matches");
+        }
 //        View view = inflater.inflate(R.layout.fragment_matches, container, false);
 //        return view;
 
-
         Log.i(TAG, "onCreate()");
 
+    }
+//!!!!!!!!!       !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        Log.i(TAG, "onActivityCreated()");
     }
 
     @Override
@@ -166,39 +165,40 @@ public class MatchesFragment extends Fragment {
         Log.i(TAG, "onStart()");
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        Log.i(TAG, "onResume()");
-    }
+//    @Override
+//    public void onResume() {
+//        super.onResume();
+//        Log.i(TAG, "onResume()");
+//    }
 
     @Override
     public void onPause() {
+        viewModel.clear();
         super.onPause();
         Log.i(TAG, "onPause()");
     }
 
-    @Override
-    public void onStop() {
-        super.onStop();
-        Log.i(TAG, "onStop()");
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        Log.i(TAG, "onDestroyView()");
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        Log.i(TAG, "onDestroy()");
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        Log.i(TAG, "onDetach()");
-    }
+//    @Override
+//    public void onStop() {
+//        super.onStop();
+//        Log.i(TAG, "onStop()");
+//    }
+//
+//    @Override
+//    public void onDestroyView() {
+//        super.onDestroyView();
+//        Log.i(TAG, "onDestroyView()");
+//    }
+//
+//    @Override
+//    public void onDestroy() {
+//        super.onDestroy();
+//        Log.i(TAG, "onDestroy()");
+//    }
+//
+//    @Override
+//    public void onDetach() {
+//        super.onDetach();
+//        Log.i(TAG, "onDetach()");
+//    }
 }
