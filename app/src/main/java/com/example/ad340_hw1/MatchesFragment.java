@@ -19,11 +19,26 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class MatchesFragment extends Fragment {
+import com.example.ad340_hw1.OnGetDataListener;
+import com.example.ad340_hw1.FirebaseMatchesViewModel;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class MatchesFragment extends Fragment implements LikeClickListener{
 
     private static final String TAG = MatchesFragment.class.getSimpleName();
-//    Context context;
+    private List<MatchesItem> matches;
 
+    //for fragments, need to use getView().findViewById ;
+    //getActivity().getIntent();
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        matches = getArguments().getParcelableArrayList(Constants.MATCHES);
+        Log.i(TAG, "onCreate()");
+
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         RecyclerView recyclerView = (RecyclerView) inflater.inflate(R.layout.recycler_view, container, false);
@@ -43,6 +58,8 @@ public class MatchesFragment extends Fragment {
         public TextView description;
         public ImageButton likeBtn;
         public String likeBtnMsg;
+//        private FirebaseMatchesViewModel vm;
+
 
         public ViewHolder(LayoutInflater inflater, ViewGroup parent){
             super(inflater.inflate(R.layout.fragment_matches, parent, false));
@@ -55,38 +72,25 @@ public class MatchesFragment extends Fragment {
             likeBtn.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v) {
-//                    RecyclerView recyclerView = itemView.findViewById(R.id.my_recycler_view);
-//                    int itemPosition = recyclerView.getChildLayoutPosition(v);
-//                    String item = R.array.match_name.getString[itemPosition];
-//                    Resources resources = context.getResources();
-//                    String item = R.array.match_name.getStringArray(itemPosition);
 
                     Toast toast = Toast.makeText(v.getContext(), likeBtnMsg, Toast.LENGTH_SHORT);
                     toast.show();
                 }
             });
 
-            //onclick
-//            itemView.setOnClickListener(new View.OnClickListener() {
+//            vm = new FirebaseMatchesViewModel();
+//
+//            vm.getMatches(new OnGetDataListener<String>()) {
 //                @Override
-//                public void onClick(View v) {
-//                    Context context = v.getContext();
-//                    Intent intent = new Intent(context, TabActivity.class);
-//                    intent.putExtra(TabActivity.EXTRA_POSITION, getAdapterPosition());
-//                    context.startActivity(intent);
+//                public void onSuccess(String dataResponse) {
+//                    textView.setText(dataResponse);
 //                }
-//            });
-//            // Adding Snackbar to Action Button inside card
-//            Button button = (Button)itemView.findViewById(R.id.action_button);
-//            button.setOnClickListener(new View.OnClickListener(){
+//
 //                @Override
-//                public void onClick(View v) {
-//                    Snackbar.make(v, "Action is pressed",
-//                            Snackbar.LENGTH_LONG).show();
+//                public void onFailure() {
+//                    System.out.println("Looks like some error happened when we tried to get helloWorld");
 //                }
-//            })}
-            //like button w/ toast
-
+//            }
         }
     }
 
@@ -94,10 +98,14 @@ public class MatchesFragment extends Fragment {
     //recyclerview adapter instance
     public class ContentAdapter extends RecyclerView.Adapter<ViewHolder> {
         // Set numbers of List in RecyclerView.
-        private static final int LENGTH = 4;
+        private static final int LENGTH = 1;
         private final String[] mNames;
         private final String[] mDesc;
         private final Drawable[] mPictures;
+
+        private FirebaseMatchesViewModel vm;
+        public ArrayList<MatchesItem> matchesItems;
+
 
         public ContentAdapter(Context context) {
             Resources resources = context.getResources();
@@ -110,28 +118,60 @@ public class MatchesFragment extends Fragment {
                 mPictures[i] = a.getDrawable(i);
             }
             a.recycle();
+
+//            vm = new FirebaseMatchesViewModel();
+//
+//            MatchesItem match = vm.getMatchItems(
+//                    (ArrayList<MatchesItem> matchesItems) -> Log.i(TAG, "hi"));
         }
 
-        @NonNull
-        @Override
-        public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            return new ViewHolder(LayoutInflater.from(parent.getContext()), parent);
-        }
 
         //onBindViewHolder binds the recycled views once they go off screen while scrolling
         @Override
         public void onBindViewHolder(ViewHolder holder, int position) {
             holder.picture.setImageDrawable(mPictures[position % mPictures.length]);
-            holder.name.setText(mNames[position % mNames.length]);
+//            holder.name.setText(mNames[position % mNames.length]);
             holder.description.setText(mDesc[position % mDesc.length]);
+
+
+
+
+
+//            vm.getMatchItems(new OnGetDataListener<String>() {
+//                @Override
+//                public void onSuccess(String dataResponse) {
+//                    holder.name.setText(dataResponse);
+//                }
+//
+//                @Override
+//                public void onFailure() {
+//                    System.out.println("Looks like some error happened when we tried to get your matches");
+//                }
+//            });
+
+
+            //new version,
+            //holder.mydatafromFirestore
+
 
             StringBuilder likeBtnMsgName = new StringBuilder(getString(R.string.you_liked));
 
             likeBtnMsgName.append(holder.name.getText().toString());
 
             holder.likeBtnMsg = likeBtnMsgName.toString();
+
             Log.i(TAG, "onBindViewHolder()" + position);
 
+        }
+
+
+
+
+
+        @NonNull
+        @Override
+        public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            return new ViewHolder(LayoutInflater.from(parent.getContext()), parent);
         }
 
         @Override
@@ -146,18 +186,11 @@ public class MatchesFragment extends Fragment {
         Log.i(TAG, "onActivityCreated()");
     }
 
-    //for fragments, need to use getView().findViewById ;
-    //getActivity().getIntent();
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-//        View view = inflater.inflate(R.layout.fragment_matches, container, false);
-//        return view;
 
 
-        Log.i(TAG, "onCreate()");
-
+    //Update database on like click
+    public void onLikeClick(MatchesItem item) {
+//        vm.update...
     }
 
     @Override
