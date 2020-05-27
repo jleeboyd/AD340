@@ -152,7 +152,7 @@ public class TabActivity extends AppCompatActivity implements LikeClickListener 
     @Override
     protected void onPause() {
         super.onPause();
-        vm.clear();
+//        vm.clear();
         Log.i(TAG, "onPause()");
     }
 

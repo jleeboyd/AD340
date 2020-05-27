@@ -51,6 +51,7 @@
 
     <string name="symbol"><![CDATA[<<]]></string>
     <string name="like">Like</string>
+    <string name="True">true</string>
 
     <string name="britta">Britta</string>
     <string name="dean">Dean Pelton</string>
@@ -68,4 +69,6 @@
     <string name="testOccupation">Spanish Teacher</string>
     <string name="testDescription">I am a man who can never die</string>
     <string name="you_liked">"You Liked "</string>
+
+    <string name="listenerError"> must implement LikeClickListener</string>
 </resources>
