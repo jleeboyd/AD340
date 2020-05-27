@@ -11,6 +11,8 @@ public class Constants {
     static final String TEST = "@string/thank_you";
 
     static final String MATCHES = "matches";
+    static final String LIKED = "liked";
+    static final String UID = "uid";
 
     static final int KEY_DOB_YEAR = 0;
     static final int KEY_DOB_MONTH = 1;

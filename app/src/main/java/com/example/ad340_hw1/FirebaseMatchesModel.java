@@ -9,7 +9,9 @@ import com.google.firebase.firestore.ListenerRegistration;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Consumer;
 
 public class FirebaseMatchesModel {
@@ -44,4 +46,17 @@ public class FirebaseMatchesModel {
     }
 
     //add update like here
+    public void updateLike(MatchesItem item) {
+        DocumentReference matchesItemRef = db.collection("matches").document(item.getUid());
+//        DocumentReference matchesItemRef = db.collection("matches").document("-LBUnGOjj3Nr5DXhI-j");
+        Map<String, Object> matchData = new HashMap<>();
+        matchData.put(Constants.LIKED, item.getLiked());
+//        matchData.put("name", "bob");
+        matchesItemRef.update(matchData);
+    }
+
+//    public void addTodoItem(TodoItem item) {
+//        CollectionReference todoItemsRef = db.collection("todoItems");
+//        todoItemsRef.add(item);
+//    }
 }

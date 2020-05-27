@@ -3,7 +3,10 @@ package com.example.ad340_hw1;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.firebase.database.Exclude;
 import com.google.firebase.database.IgnoreExtraProperties;
+
+import java.util.HashMap;
 
 @IgnoreExtraProperties
 public class MatchesItem implements Parcelable {
@@ -65,11 +68,22 @@ public class MatchesItem implements Parcelable {
         return uid;
     }
 
+//    @Exclude
+//    public Map(String, Object> toMap() {
+//        HashMap<String, Object> result = new HashMap<>();
+//        result.put(Constants.UID, uid);
+//        result.put(Constants.LIKED, liked);
+//
+//        return result;
+//    }
     //Mutators
     public void setLiked(boolean liked) {
         this.liked = liked;
     }
 
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
     @Override
     public int describeContents() {
         return 0;
@@ -78,6 +92,6 @@ public class MatchesItem implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(name);
-//        dest.writeByte((byte) (done ? 1 : 0));
+        dest.writeByte((byte) (liked ? 1 : 0));
     }
 }

@@ -22,7 +22,7 @@ import com.google.android.material.tabs.TabLayout;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TabActivity extends AppCompatActivity //implements MatchesFragment.OnListFragmentInteractionListener {
+public class TabActivity extends AppCompatActivity implements LikeClickListener {
 
     private static final String TAG = TabActivity.class.getSimpleName();
     private FirebaseMatchesViewModel vm;
@@ -65,6 +65,8 @@ public class TabActivity extends AppCompatActivity //implements MatchesFragment.
 
     //add fragments to tabs
     private void setupViewPager(ViewPager viewpager, Bundle b) {
+
+
         MatchesFragment matchesFragment = new MatchesFragment();
 
         Adapter adapter = new Adapter(getSupportFragmentManager());
@@ -73,20 +75,28 @@ public class TabActivity extends AppCompatActivity //implements MatchesFragment.
 
         //add bundle to fragment
 //        adapter.getItem(1).setArguments(b); uncomment for working app bundle passed from activity
-        vm = new FirebaseMatchesViewModel();
 
-        vm.getMatchItems(
-                (ArrayList<MatchesItem> matchesItems) -> {
-                    Bundle bundle = new Bundle();
-                    bundle.putParcelableArrayList(Constants.MATCHES, matchesItems);
-                    matchesFragment.setArguments(bundle);
-                }
-        );
+//        vm = new FirebaseMatchesViewModel();
+
+//        vm.getMatchItems(
+//                (ArrayList<MatchesItem> matchesItems) -> {
+//                    Bundle bundle = new Bundle();
+//                    matchesFragment.setArguments(bundle);
+////                    Log.i(TAG, matchesItems.toString());
+//                    bundle.putParcelableArrayList(Constants.MATCHES, matchesItems);
+//                }
+//        );
+
 
 
 //        Log.i(TAG, b.getString(Constants.KEY_USERNAME)+"setup");
         adapter.addFragment(new SettingsFragment(), "SETTINGS");
         viewpager.setAdapter(adapter);
+    }
+
+    @Override
+    public void onLikeClick(MatchesItem item) {
+
     }
 
     static class Adapter extends FragmentPagerAdapter {
@@ -127,6 +137,10 @@ public class TabActivity extends AppCompatActivity //implements MatchesFragment.
 //        matchesItem.liked = !matchesItem.liked;
 //    }
 
+    //Update database on like click
+    public void LikeClick(MatchesItem item) {
+//        vm.update...
+    }
     //when rotated onResume is called
     @Override
     protected void onResume() {

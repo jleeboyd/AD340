@@ -1,5 +1,7 @@
 package com.example.ad340_hw1;
 
+import android.util.Log;
+
 import androidx.annotation.Nullable;
 
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -13,6 +15,7 @@ import java.util.function.Consumer;
 
 public class FirebaseMatchesViewModel {
 
+    private static final String TAG = FirebaseMatchesViewModel.class.getSimpleName();;
     private FirebaseMatchesModel model;
 
     public FirebaseMatchesViewModel() {
@@ -56,17 +59,20 @@ public class FirebaseMatchesViewModel {
                             item.uid = matchesSnapshot.getId();
                             matchesItems.add(item);
                         }
-                        responseCallback.accept(matchesItems);
+                        responseCallback.accept(matchesItems); //debug
                     }
                 },
-                (databaseError -> System.out.println("Error getting matches: " + databaseError))
+                (databaseError -> Log.i(TAG, "Error getting info"))//System.out.println("Error getting matches: " + databaseError))
+
         );
     }
-
-    //updatematches here
 
     //clear listeners for onPause() in model
     public void clear() {
         model.clear();
+    }
+
+    public void updateLiked(MatchesItem item) {
+        model.updateLike(item);
     }
 }
