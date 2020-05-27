@@ -74,7 +74,7 @@ public class TabActivity extends AppCompatActivity implements LikeClickListener 
         adapter.addFragment(new ProfileFragment(), "PROFILE");
 
         //add bundle to fragment
-//        adapter.getItem(1).setArguments(b); uncomment for working app bundle passed from activity
+        adapter.getItem(1).setArguments(b); //uncomment for working app bundle passed from activity
 
 //        vm = new FirebaseMatchesViewModel();
 

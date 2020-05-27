@@ -80,7 +80,7 @@ public class TabActivityTest {
     public void hasTextOnScreenProfile()
     {
         onView(withId(R.id.textViewProfileUsername))
-                .check(matches(withText("El Tigre")));
+                .check(matches(withText("ElTigre")));
 
         onView(withId(R.id.textViewProfileFirstName))
                 .check(matches(withText("Ben")));
