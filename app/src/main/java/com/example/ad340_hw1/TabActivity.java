@@ -22,10 +22,10 @@ import com.google.android.material.tabs.TabLayout;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TabActivity extends AppCompatActivity {
+public class TabActivity extends AppCompatActivity implements LikeClickListener {
 
     private static final String TAG = TabActivity.class.getSimpleName();
-
+    private FirebaseMatchesViewModel vm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -60,28 +60,43 @@ public class TabActivity extends AppCompatActivity {
             tabs.setupWithViewPager(viewpager);
         }
 
-
-
-//        tabs.addTab(tabs.newTab().setText("MATCHES"));
-//        tabs.addTab(tabs.newTab().setText("PROFILE"));
-//        tabs.addTab(tabs.newTab().setText("SETTINGS"));
-
-
-
         Log.i(TAG, "onCreate()");
     }
 
     //add fragments to tabs
     private void setupViewPager(ViewPager viewpager, Bundle b) {
+
+
+        MatchesFragment matchesFragment = new MatchesFragment();
+
         Adapter adapter = new Adapter(getSupportFragmentManager());
-        adapter.addFragment(new MatchesFragment(), "MATCHES");
+        adapter.addFragment(matchesFragment, "MATCHES");
         adapter.addFragment(new ProfileFragment(), "PROFILE");
 
         //add bundle to fragment
-        adapter.getItem(1).setArguments(b);
+        adapter.getItem(1).setArguments(b); //uncomment for working app bundle passed from activity
+
+//        vm = new FirebaseMatchesViewModel();
+
+//        vm.getMatchItems(
+//                (ArrayList<MatchesItem> matchesItems) -> {
+//                    Bundle bundle = new Bundle();
+//                    matchesFragment.setArguments(bundle);
+////                    Log.i(TAG, matchesItems.toString());
+//                    bundle.putParcelableArrayList(Constants.MATCHES, matchesItems);
+//                }
+//        );
+
+
+
 //        Log.i(TAG, b.getString(Constants.KEY_USERNAME)+"setup");
         adapter.addFragment(new SettingsFragment(), "SETTINGS");
         viewpager.setAdapter(adapter);
+    }
+
+    @Override
+    public void onLikeClick(MatchesItem item) {
+
     }
 
     static class Adapter extends FragmentPagerAdapter {
@@ -115,39 +130,17 @@ public class TabActivity extends AppCompatActivity {
         }
     }
 
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.menu_main, menu);
-//        return true;
-//    }
 
 //    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        // Handle action bar item clicks here. The action bar will
-//        // automatically handle clicks on the Home/Up button, so long
-//        // as you specify a parent activity in AndroidManifest.xml.
-//        int id = item.getItemId();
-//        //noinspection SimplifiableIfStatement
-//        if (id == R.id.action_settings) {
-//            return true;
-//        }
-//        return super.onOptionsItemSelected(item);
+//    public void onListFragmentInteractionListener(MatchesItem matchesItem) {
+//        //like button here
+//        matchesItem.liked = !matchesItem.liked;
 //    }
-    @Override
-    protected void onRestart() {
-        super.onRestart();
 
-        Log.i(TAG, "onRestart()");
+    //Update database on like click
+    public void LikeClick(MatchesItem item) {
+//        vm.update...
     }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        Log.i(TAG, "Start()");
-    }
-
     //when rotated onResume is called
     @Override
     protected void onResume() {
@@ -155,21 +148,12 @@ public class TabActivity extends AppCompatActivity {
         Log.i(TAG, "onResume()");
     }
 
+    //call clear listeners
     @Override
     protected void onPause() {
         super.onPause();
+//        vm.clear();
         Log.i(TAG, "onPause()");
     }
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Log.i(TAG, "onStop()");
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Log.i(TAG, "onDestroy()");
-    }
 }

@@ -55,6 +55,10 @@ public class TabActivityTest {
                 .perform(RecyclerViewActions.actionOnItemAtPosition(2,click()));
         onView(ViewMatchers.withId(R.id.my_recycler_view))
                 .perform(RecyclerViewActions.actionOnItemAtPosition(3,click()));
+        onView(ViewMatchers.withId(R.id.my_recycler_view))
+                .perform(RecyclerViewActions.actionOnItemAtPosition(4,click()));
+        onView(ViewMatchers.withId(R.id.my_recycler_view))
+                .perform(RecyclerViewActions.actionOnItemAtPosition(5,click()));
 
         //check text matches, check SO for next steps
         //https://stackoverflow.com/questions/51678563/how-to-access-recyclerview-viewholder-with-espresso
@@ -76,7 +80,7 @@ public class TabActivityTest {
     public void hasTextOnScreenProfile()
     {
         onView(withId(R.id.textViewProfileUsername))
-                .check(matches(withText("El Tigre")));
+                .check(matches(withText("ElTigre")));
 
         onView(withId(R.id.textViewProfileFirstName))
                 .check(matches(withText("Ben")));
