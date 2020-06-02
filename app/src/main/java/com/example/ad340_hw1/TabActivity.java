@@ -66,31 +66,23 @@ public class TabActivity extends AppCompatActivity implements LikeClickListener 
     //add fragments to tabs
     private void setupViewPager(ViewPager viewpager, Bundle b) {
 
-
         MatchesFragment matchesFragment = new MatchesFragment();
+        ProfileFragment profileFragment = new ProfileFragment();
+        SettingsFragment settingsFragment = new SettingsFragment();
 
         Adapter adapter = new Adapter(getSupportFragmentManager());
         adapter.addFragment(matchesFragment, "MATCHES");
-        adapter.addFragment(new ProfileFragment(), "PROFILE");
+        adapter.addFragment(profileFragment, "PROFILE");
+        adapter.addFragment(settingsFragment, "SETTINGS");
+//        adapter.addFragment(new ProfileFragment(), "PROFILE");
+//        adapter.addFragment(new SettingsFragment(), "SETTINGS");
 
-        //add bundle to fragment
+        // Add bundle to profile fragment
         adapter.getItem(1).setArguments(b); //uncomment for working app bundle passed from activity
 
-//        vm = new FirebaseMatchesViewModel();
+        // Add bundle to settings fragment
+        adapter.getItem(2).setArguments(b);
 
-//        vm.getMatchItems(
-//                (ArrayList<MatchesItem> matchesItems) -> {
-//                    Bundle bundle = new Bundle();
-//                    matchesFragment.setArguments(bundle);
-////                    Log.i(TAG, matchesItems.toString());
-//                    bundle.putParcelableArrayList(Constants.MATCHES, matchesItems);
-//                }
-//        );
-
-
-
-//        Log.i(TAG, b.getString(Constants.KEY_USERNAME)+"setup");
-        adapter.addFragment(new SettingsFragment(), "SETTINGS");
         viewpager.setAdapter(adapter);
     }
 

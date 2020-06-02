@@ -19,13 +19,16 @@ import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
 @RunWith(AndroidJUnit4.class)
 public class TabActivityTest {
+//    @Rule
+//    public ActivityTestRule<MainActivity> mActivityRule = new ActivityTestRule<>(
+//            MainActivity.class, true, true);
     @Rule
-    public ActivityTestRule<MainActivity> mActivityRule = new ActivityTestRule<>(
-            MainActivity.class, true, true);
+    public ActivityTestRule<TabActivity> mActivityRule = new ActivityTestRule<>(
+        TabActivity.class, true, true);
 
     private static final String TAG = TabActivityTest.class.getSimpleName();
 
-
+//LEFT OFF WITH TESTING AND CREATING RECYCLER VIEW
     @Test
     public void hasTextOnScreenAll()
     {
@@ -35,6 +38,8 @@ public class TabActivityTest {
         hasTextOnScreenProfile();
         navigation();
         hasTextOnScreenSettings();
+
+//        hasImageMatches();
     }
 
     public void navigation()
@@ -44,8 +49,26 @@ public class TabActivityTest {
 //        onView(withId(R.id.tabs)).perform(ViewActions.swipeLeft());
     }
 
+    public void hasImageMatches(){
+//        onView(ViewMatchers.withId(R.id.my_recycler_view).atPs
+    }
+    public void hasNameMatches(){
+
+    }
+    public void hasDescriptionMatches(){
+
+    }
+    public void likeButtonClickMatches(){
+
+    }
+
     public void hasTextOnScreenMatches()
     {
+        //Test like button with toast
+        //match has description
+        //match has name
+        //match has image
+
         //scroll to card and click card at positions
         onView(ViewMatchers.withId(R.id.my_recycler_view))
                 .perform(RecyclerViewActions.actionOnItemAtPosition(0,click()));
@@ -98,8 +121,14 @@ public class TabActivityTest {
                 .check(matches(withText("I am a man who can never die")));
     }
 
+
     public void hasTextOnScreenSettings()
     {
+        //Test similar to main activity sequential
+        // reminder save
+        // ...
+        // reminder distance gender privacy max age min age save
+
         onView(withId(R.id.textViewSettings))
                 .check(matches(withText(R.string.settings)));
     }
@@ -111,4 +140,5 @@ public class TabActivityTest {
         MainActivityTest Main = new MainActivityTest();
         Main.testSuccessfulSignUp();
     }
+
 }

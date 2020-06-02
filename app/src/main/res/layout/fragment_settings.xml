@@ -1,13 +1,186 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/profile_photo">
+<!--<LinearLayout-->
+<!--    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:layout_height="match_parent"-->
+<!--    android:background="@drawable/profile_photo"-->
+<!--    android:orientation="vertical"-->
+<!--    tools:context=".SettingsFragment">-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".SettingsFragment">
 
-    <TextView
-        android:id="@+id/textViewSettings"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/settings" />
+        <TextView
+            android:id="@+id/textViewSettings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/my_value15"
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            android:text="@string/settings"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="@dimen/my_value4" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/my_value15"
+            android:layout_marginTop="@dimen/my_value20"
+            android:textColor="@color/black"
+            android:text="@string/reminder_title"
+            android:textSize="@dimen/my_value17"/>
+
+
+        <EditText
+            android:id="@+id/editTextReminderTime"
+            android:layout_width="@dimen/my_value200"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/my_value15"
+            android:hint="@string/reminder_hint"
+            android:autofillHints="@string/reminder_hint"
+            android:inputType="time" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/my_value15"
+            android:layout_marginTop="@dimen/my_value15"
+            android:textColor="@color/black"
+            android:text="@string/max_distance_title"
+            android:textSize="@dimen/my_value17"/>
+
+        <EditText
+            android:id="@+id/editTextMaxDistance"
+            android:layout_width="@dimen/my_value200"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/my_value15"
+            android:hint="@string/max_distance_hint"
+            android:autofillHints=""
+            android:inputType="number"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/my_value15"
+            android:layout_marginTop="@dimen/my_value15"
+            android:textColor="@color/black"
+            android:text="@string/gender_title"
+            android:textSize="@dimen/my_value17"/>
+
+        <EditText
+            android:id="@+id/editTextGender"
+            android:layout_width="@dimen/my_value200"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/my_value15"
+            android:hint="@string/gender_hint"
+            android:autofillHints=""
+            android:inputType="text"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/my_value15"
+            android:layout_marginTop="@dimen/my_value15"
+            android:textColor="@color/black"
+            android:text="@string/privacy_title"
+            android:textSize="@dimen/my_value17"/>
+
+        <EditText
+            android:id="@+id/editTextPrivacy"
+            android:layout_width="@dimen/my_value200"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/my_value15"
+            android:hint="@string/privacy_hint"
+            android:autofillHints=""
+            android:inputType="text"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/my_value15"
+            android:layout_marginTop="@dimen/my_value15"
+            android:textColor="@color/black"
+            android:text="@string/min_age_title"
+            android:textSize="@dimen/my_value17"/>
+
+        <EditText
+            android:id="@+id/editTextMinAge"
+            android:layout_width="@dimen/my_value200"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/my_value15"
+            android:hint="@string/min_age_hint"
+            android:autofillHints=""
+            android:inputType="number"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/my_value15"
+            android:layout_marginTop="@dimen/my_value15"
+            android:textColor="@color/black"
+            android:text="@string/max_age_title"
+            android:textSize="@dimen/my_value17"/>
+
+        <EditText
+            android:id="@+id/editTextMaxAge"
+            android:layout_width="@dimen/my_value200"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/my_value15"
+            android:hint="@string/max_age_hint"
+            android:autofillHints=""
+            android:inputType="number"/>
+
+        <Button
+            android:id="@+id/buttonSaveSettings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/my_value15"
+            android:layout_marginTop="@dimen/my_value20"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/save" />
+
+<!--    <TextView-->
+<!--        android:id="@+id/textViewDBTest"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="@dimen/my_value15"-->
+<!--        android:layout_marginTop="@dimen/my_value20"-->
+<!--        android:text="@string/none" />-->
+
+    </LinearLayout>
+</ScrollView>
+<!--<TimePicker-->
+<!--android:id="@+id/timePickerReminderTime"-->
+<!--android:layout_width="wrap_content"-->
+<!--android:layout_height="wrap_content" />-->
+
+<!--<SeekBar-->
+<!--android:id="@+id/seekBarMaxDistance"-->
+<!--android:layout_width="wrap_content"-->
+<!--android:layout_height="wrap_content" />-->
+
+<!--<EditText-->
+<!--android:id="@+id/editTextGender"-->
+<!--android:layout_width="wrap_content"-->
+<!--android:layout_height="wrap_content"-->
+<!--android:hint="@string/gender"/>-->
+
+<!--<Switch-->
+<!--android:id="@+id/switchPrivacy"-->
+<!--android:layout_width="wrap_content"-->
+<!--android:layout_height="wrap_content" />-->
+
+<!--<SeekBar-->
+<!--android:id="@+id/seekBarMaxAge"-->
+<!--android:layout_width="wrap_content"-->
+<!--android:layout_height="wrap_content" />-->

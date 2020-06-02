@@ -18,6 +18,13 @@
         <item>@string/desc_britta</item>
         <item>@string/desc_magnitude</item>
     </string-array>
+    <string-array name="gender" >
+        <item>He/Him</item>
+        <item>She/Her</item>
+        <item>They/Them</item>
+        <item>Other</item>
+        <item>Id Rather Not Say</item>
+    </string-array>
 
 
 

@@ -93,6 +93,7 @@ public class MatchesFragment extends Fragment implements LikeClickListener{
         public ImageButton likeBtn;
 
         public String likeBtnMsg;
+        public String unlikeBtnMsg;
 
         public String matchName; //Used for likeBtnMsg
         public boolean isLiked; //Used for like on click
@@ -127,9 +128,21 @@ public class MatchesFragment extends Fragment implements LikeClickListener{
                         match.setUid(matchUid); //document path
                         vm.updateLiked(match);
                         Log.i(TAG, String.valueOf(match.getLiked()));
+
+                        Toast toast = Toast.makeText(v.getContext(), unlikeBtnMsg, Toast.LENGTH_SHORT);
+                        toast.show();
                     }
 
-                    else if(!isLiked) {
+//                    else if(!isLiked) {
+//                        likeBtn.setImageResource(R.drawable.like_button);
+//
+//                        isLiked = !isLiked;
+//                        match.setLiked(isLiked);
+//                        match.setUid(matchUid);
+//                        vm.updateLiked(match);
+//                        Log.i(TAG, String.valueOf(match.getLiked()));
+//                    }
+                    else{
                         likeBtn.setImageResource(R.drawable.like_button);
 
                         isLiked = !isLiked;
@@ -137,11 +150,11 @@ public class MatchesFragment extends Fragment implements LikeClickListener{
                         match.setUid(matchUid);
                         vm.updateLiked(match);
                         Log.i(TAG, String.valueOf(match.getLiked()));
+
+                        Toast toast = Toast.makeText(v.getContext(), likeBtnMsg, Toast.LENGTH_SHORT);
+                        toast.show();
                     }
                     Log.i(TAG, matchName);
-
-                    Toast toast = Toast.makeText(v.getContext(), likeBtnMsg, Toast.LENGTH_SHORT);
-                    toast.show();
 
                 }
             });
@@ -222,16 +235,17 @@ public class MatchesFragment extends Fragment implements LikeClickListener{
                 holder.likeBtn.setImageResource(R.drawable.like_button);
             }
 
+            // CREATE NEW STRING BUILDER FOR UNLIKE BUTTON
             holder.matchName = holder.name.getText().toString();//set name for each card
-            StringBuilder likeBtnMsgName = new StringBuilder(getString(R.string.you_liked));
+
+            StringBuilder likeBtnMsgName   = new StringBuilder(getString(R.string.you_liked));
+            StringBuilder unlikeBtnMsgName = new StringBuilder(getString(R.string.you_unliked));
             likeBtnMsgName.append(holder.matchName);
-            holder.likeBtnMsg = likeBtnMsgName.toString();
+            unlikeBtnMsgName.append(holder.matchName);
+            holder.likeBtnMsg   = likeBtnMsgName.toString();
+            holder.unlikeBtnMsg = unlikeBtnMsgName.toString();
 
-            Log.i(TAG, "onBindViewHolder()" + position);
-
-            //implement onlike click. run full app. testin.
-            //if time permits do auth.
-
+//            Log.i(TAG, "onBindViewHolder()" + position);
         }
 
 
