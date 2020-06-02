@@ -19,12 +19,13 @@ import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
 @RunWith(AndroidJUnit4.class)
 public class TabActivityTest {
-//    @Rule
-//    public ActivityTestRule<MainActivity> mActivityRule = new ActivityTestRule<>(
-//            MainActivity.class, true, true);
     @Rule
-    public ActivityTestRule<TabActivity> mActivityRule = new ActivityTestRule<>(
-        TabActivity.class, true, true);
+    public ActivityTestRule<MainActivity> mActivityRule = new ActivityTestRule<>(
+            MainActivity.class, true, true);
+    //testing
+//    @Rule
+//    public ActivityTestRule<TabActivity> mActivityRule = new ActivityTestRule<>(
+//        TabActivity.class, true, true);
 
     private static final String TAG = TabActivityTest.class.getSimpleName();
 
