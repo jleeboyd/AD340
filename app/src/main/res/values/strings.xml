@@ -27,6 +27,10 @@
     <string name="invalid_desc">Invalid Description</string>
     <string name="invalid_dob">Must be over 18</string>
 
+    <string name="invalid_distance">Distance must be between 0 and 50</string>
+    <string name="invalid_age_range">Check your Min and Max</string>
+    <string name="invalid_privacy">Privacy must be Private or Public</string>
+
     <string name="a">a</string>
     <string name="b">b</string>
     <string name="c">c</string>
@@ -69,6 +73,43 @@
     <string name="testOccupation">Spanish Teacher</string>
     <string name="testDescription">I am a man who can never die</string>
     <string name="you_liked">"You Liked "</string>
+    <string name="you_unliked">"You Unliked "</string>
 
     <string name="listenerError"> must implement LikeClickListener</string>
+
+    <string name="reminder_hint">Ex. 6:00</string>
+    <string name="max_distance_hint">Ex. 20</string>
+    <string name="gender_hint">Ex. Male, Female, Other</string>
+    <string name="privacy_hint">Ex. Public/Private</string>
+    <string name="max_age_hint">Ex. 30</string>
+    <string name="min_age_hint">Ex. 18</string>
+
+    <string name="reminder_title">Set Match Reminder Time (24hrs)</string>
+    <string name="max_distance_title">Set Max Distance (mi)</string>
+    <string name="gender_title">Gender</string>
+    <string name="privacy_title">Account Privacy</string>
+    <string name="max_age_title">Set Max Age</string>
+    <string name="min_age_title">Set Min Age</string>
+
+    <string name="save">Save</string>
+    <string name="test_email">john.boyd@seattlecolleges.edu</string>
+    <string name="none">No email value</string>
+    <string name="gender">Male</string>
+    <string name="_public">Public</string>
+    <string name="_private">Private</string>
+    <string name="none_value">None</string>
+    <string name="invalid_settings">Please recheck entered settings</string>
+    <string name="fifty_mi">50</string>
+    <string name="invalid_age">Must input Min and Max age</string>
+    <string name="eighteen">18</string>
+    <string name="thirty">30</string>
+    <string name="zero">0</string>
+    <string name="settings_saved">Settings Saved</string>
+    <string name="test_email_1">test@test.com</string>
+    <string name="test_email_2">test@test.net</string>
+    <string name="test_email_3">t@g.com</string>
+    <string name="test_email_4">r@g.com</string>
+    <string name="test_email_5">r@o.com</string>
+
+
 </resources>

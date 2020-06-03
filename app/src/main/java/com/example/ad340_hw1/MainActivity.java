@@ -14,7 +14,6 @@ import android.widget.Toast;
 
 import java.time.LocalDate;
 import java.time.Period;
-import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity{
@@ -67,6 +66,7 @@ public class MainActivity extends AppCompatActivity{
     protected void onRestart() {
         super.onRestart();
 
+        // UNCOMMENT FOR TESTING ROTATION
         editTextFirst.setText("");
         editTextLast.setText("");
         editTextEmail.setText("");
@@ -79,69 +79,38 @@ public class MainActivity extends AppCompatActivity{
     }
 
     @Override
-    protected void onStart() {
-        super.onStart();
-
-        Log.i(TAG, "Start()");
-    }
-
-    //when rotated onResume is called
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.i(TAG, "onResume()");
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Log.i(TAG, "onPause()");
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Log.i(TAG, "onStop()");
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Log.i(TAG, "onDestroy()");
-    }
-
-    @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
 
         super.onRestoreInstanceState(savedInstanceState);
 
-        if (savedInstanceState.containsKey(Constants.KEY_FIRST_NAME)) {
-            editTextFirst.setText((String)savedInstanceState.get(Constants.KEY_FIRST_NAME));
-        }
-        if (savedInstanceState.containsKey(Constants.KEY_LAST_NAME)) {
-            editTextLast.setText((String)savedInstanceState.get(Constants.KEY_LAST_NAME));
-        }
-        if (savedInstanceState.containsKey(Constants.KEY_EMAIL)) {
-            editTextEmail.setText((String) savedInstanceState.get(Constants.KEY_EMAIL));
-        }
-        if (savedInstanceState.containsKey(Constants.KEY_USERNAME)) {
-            editTextUser.setText((String) savedInstanceState.get(Constants.KEY_USERNAME));
-        }
-        if (savedInstanceState.containsKey(Constants.KEY_DESCRIPTION)) {
-            editTextUser.setText((String) savedInstanceState.get(Constants.KEY_DESCRIPTION));
-        }
-        if (savedInstanceState.containsKey(Constants.KEY_OCCUPATION)) {
-            editTextUser.setText((String) savedInstanceState.get(Constants.KEY_OCCUPATION));
-        }
-
-        //onRestore date picker
-        int myYear = Integer.parseInt((String) savedInstanceState.get(Constants.KEY_YEAR));
-        int myMonth = Integer.parseInt((String) savedInstanceState.get(Constants.KEY_MONTH));
-        int myDay = Integer.parseInt((String) savedInstanceState.get(Constants.KEY_DAY));
-
-        if (savedInstanceState.containsKey(String.valueOf((Constants.KEY_YEAR)))) {
-            date.updateDate(myYear,myMonth,myDay);
-        }
+        //UNCOMMENT FOR TESING ROTATION
+//        if (savedInstanceState.containsKey(Constants.KEY_FIRST_NAME)) {
+//            editTextFirst.setText((String)savedInstanceState.get(Constants.KEY_FIRST_NAME));
+//        }
+//        if (savedInstanceState.containsKey(Constants.KEY_LAST_NAME)) {
+//            editTextLast.setText((String)savedInstanceState.get(Constants.KEY_LAST_NAME));
+//        }
+//        if (savedInstanceState.containsKey(Constants.KEY_EMAIL)) {
+//            editTextEmail.setText((String) savedInstanceState.get(Constants.KEY_EMAIL));
+//        }
+//        if (savedInstanceState.containsKey(Constants.KEY_USERNAME)) {
+//            editTextUser.setText((String) savedInstanceState.get(Constants.KEY_USERNAME));
+//        }
+//        if (savedInstanceState.containsKey(Constants.KEY_DESCRIPTION)) {
+//            editTextUser.setText((String) savedInstanceState.get(Constants.KEY_DESCRIPTION));
+//        }
+//        if (savedInstanceState.containsKey(Constants.KEY_OCCUPATION)) {
+//            editTextUser.setText((String) savedInstanceState.get(Constants.KEY_OCCUPATION));
+//        }
+//
+//        //onRestore date picker
+//        int myYear = Integer.parseInt((String) savedInstanceState.get(Constants.KEY_YEAR));
+//        int myMonth = Integer.parseInt((String) savedInstanceState.get(Constants.KEY_MONTH));
+//        int myDay = Integer.parseInt((String) savedInstanceState.get(Constants.KEY_DAY));
+//
+//        if (savedInstanceState.containsKey(String.valueOf((Constants.KEY_YEAR)))) {
+//            date.updateDate(myYear,myMonth,myDay);
+//        }
 
         Log.i(TAG, "onRestoreInstanceState()");
     }

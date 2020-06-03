@@ -36,15 +36,14 @@ public class ProfileFragment extends Fragment {
     String desc;
     String occu;
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        Log.i(TAG, "onAttach()");
-    }
+//    @Override
+//    public void onAttach(Context context) {
+//        super.onAttach(context);
+//        Log.i(TAG, "onAttach()");
+//    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-
 
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
         Bundle bundle = getArguments();
@@ -82,15 +81,14 @@ public class ProfileFragment extends Fragment {
 //            Log.i(TAG, bundle.getString(Constants.KEY_USERNAME) + " fragment");
         }
 
-        else {
-            Log.i(TAG, "bundle is null");
-        }
+//        else {
+//            Log.i(TAG, "bundle is null");
+//        }
 
         Log.i(TAG, "onCreateView()");
 
         return view; //inflater.inflate(R.layout.fragment_profile, null, true);
     }
-
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -103,50 +101,7 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         Log.i(TAG, "onCreate()");
-
     }
 
-    @Override
-    public void onStart() {
-        super.onStart(); //override default onStart() and obtain from AppCompatActivity (parent) logic.
-        Log.i(TAG, "onStart()");
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        Log.i(TAG, "onResume()");
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        Log.i(TAG, "onPause()");
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        Log.i(TAG, "onStop()");
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        Log.i(TAG, "onDestroyView()");
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        Log.i(TAG, "onDestroy()");
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        Log.i(TAG, "onDetach()");
-    }
 }

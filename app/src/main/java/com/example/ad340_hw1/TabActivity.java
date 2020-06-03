@@ -3,15 +3,7 @@ package com.example.ad340_hw1;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Adapter;
-import android.widget.TextView;
-
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
@@ -49,16 +41,16 @@ public class TabActivity extends AppCompatActivity implements LikeClickListener 
             Log.i(TAG, b.getString(Constants.KEY_USERNAME)+" tabActivity");
         }
 
-        //for single activity testing
-        else{
-
-            ViewPager viewpager = findViewById(R.id.viewpager);
-            setupViewPager(viewpager, b);
-
-            //toolbar already given due to app creation type
-            TabLayout tabs = findViewById(R.id.tabs);
-            tabs.setupWithViewPager(viewpager);
-        }
+       // // UNCOMMENT for single activity testing @@@@@@@@@@@@@@
+//        else{
+//
+//            ViewPager viewpager = findViewById(R.id.viewpager);
+//            setupViewPager(viewpager, b);
+//
+//            //toolbar already given due to app creation type
+//            TabLayout tabs = findViewById(R.id.tabs);
+//            tabs.setupWithViewPager(viewpager);
+//        }
 
         Log.i(TAG, "onCreate()");
     }
@@ -66,31 +58,23 @@ public class TabActivity extends AppCompatActivity implements LikeClickListener 
     //add fragments to tabs
     private void setupViewPager(ViewPager viewpager, Bundle b) {
 
-
         MatchesFragment matchesFragment = new MatchesFragment();
+        ProfileFragment profileFragment = new ProfileFragment();
+        SettingsFragment settingsFragment = new SettingsFragment();
 
         Adapter adapter = new Adapter(getSupportFragmentManager());
         adapter.addFragment(matchesFragment, "MATCHES");
-        adapter.addFragment(new ProfileFragment(), "PROFILE");
+        adapter.addFragment(profileFragment, "PROFILE");
+        adapter.addFragment(settingsFragment, "SETTINGS");
+//        adapter.addFragment(new ProfileFragment(), "PROFILE");
+//        adapter.addFragment(new SettingsFragment(), "SETTINGS");
 
-        //add bundle to fragment
+        // Add bundle to profile fragment
         adapter.getItem(1).setArguments(b); //uncomment for working app bundle passed from activity
 
-//        vm = new FirebaseMatchesViewModel();
+        // Add bundle to settings fragment
+        adapter.getItem(2).setArguments(b);
 
-//        vm.getMatchItems(
-//                (ArrayList<MatchesItem> matchesItems) -> {
-//                    Bundle bundle = new Bundle();
-//                    matchesFragment.setArguments(bundle);
-////                    Log.i(TAG, matchesItems.toString());
-//                    bundle.putParcelableArrayList(Constants.MATCHES, matchesItems);
-//                }
-//        );
-
-
-
-//        Log.i(TAG, b.getString(Constants.KEY_USERNAME)+"setup");
-        adapter.addFragment(new SettingsFragment(), "SETTINGS");
         viewpager.setAdapter(adapter);
     }
 
@@ -128,24 +112,6 @@ public class TabActivity extends AppCompatActivity implements LikeClickListener 
         public CharSequence getPageTitle(int position) {
             return mFragmentTitleList.get(position);
         }
-    }
-
-
-//    @Override
-//    public void onListFragmentInteractionListener(MatchesItem matchesItem) {
-//        //like button here
-//        matchesItem.liked = !matchesItem.liked;
-//    }
-
-    //Update database on like click
-    public void LikeClick(MatchesItem item) {
-//        vm.update...
-    }
-    //when rotated onResume is called
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.i(TAG, "onResume()");
     }
 
     //call clear listeners
