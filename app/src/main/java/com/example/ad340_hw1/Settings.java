@@ -15,7 +15,7 @@ public class Settings {
     @NonNull
     private String email = "";
 
-    @NonNull
+    // Change back to @NonNull for database version 1 with test email data
     @ColumnInfo(name = "reminder_time")
     private String reminderTime = "None";
 
@@ -45,7 +45,7 @@ public class Settings {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(@NonNull String email) {
         this.email = email;
     }
 

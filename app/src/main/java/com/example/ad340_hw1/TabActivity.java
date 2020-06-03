@@ -3,15 +3,7 @@ package com.example.ad340_hw1;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Adapter;
-import android.widget.TextView;
-
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
@@ -120,24 +112,6 @@ public class TabActivity extends AppCompatActivity implements LikeClickListener 
         public CharSequence getPageTitle(int position) {
             return mFragmentTitleList.get(position);
         }
-    }
-
-
-//    @Override
-//    public void onListFragmentInteractionListener(MatchesItem matchesItem) {
-//        //like button here
-//        matchesItem.liked = !matchesItem.liked;
-//    }
-
-    //Update database on like click
-    public void LikeClick(MatchesItem item) {
-//        vm.update...
-    }
-    //when rotated onResume is called
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.i(TAG, "onResume()");
     }
 
     //call clear listeners

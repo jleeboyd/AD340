@@ -14,7 +14,6 @@ import android.widget.Toast;
 
 import java.time.LocalDate;
 import java.time.Period;
-import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity{
@@ -76,38 +75,6 @@ public class MainActivity extends AppCompatActivity{
         date.updateDate(year, month, day);
 
         Log.i(TAG, "onRestart()");
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        Log.i(TAG, "Start()");
-    }
-
-    //when rotated onResume is called
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.i(TAG, "onResume()");
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Log.i(TAG, "onPause()");
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Log.i(TAG, "onStop()");
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Log.i(TAG, "onDestroy()");
     }
 
     @Override

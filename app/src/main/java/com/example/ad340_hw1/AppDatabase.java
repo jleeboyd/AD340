@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase;
 import java.util.concurrent.ForkJoinPool;
 
 // Abstract class for Room Database setup
-@Database(entities = {Settings.class}, version = 1)
+@Database(entities = {Settings.class}, version = 2)
 public abstract class AppDatabase extends RoomDatabase {
     public abstract SettingsDao settingsDao();
 

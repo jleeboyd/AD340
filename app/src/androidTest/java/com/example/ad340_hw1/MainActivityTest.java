@@ -247,7 +247,7 @@ public class MainActivityTest {
         {
             if (hasContent)
             {
-                onView(withId(R.id.editTextEmail)).perform(typeText("ELTigre@greendalecollege.edu"));
+                onView(withId(R.id.editTextEmail)).perform(typeText("test@test.net"));
             }
 
             else {
