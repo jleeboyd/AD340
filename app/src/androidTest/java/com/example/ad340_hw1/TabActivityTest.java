@@ -27,7 +27,8 @@ public class TabActivityTest {
     @Rule
     public ActivityTestRule<MainActivity> mActivityRule = new ActivityTestRule<>(
             MainActivity.class, true, true);
-//    //testing
+
+//    //UNCOMMENT FOR TESTING @@@@@@@@@
 //    @Rule
 //    public ActivityTestRule<TabActivity> mActivityRule = new ActivityTestRule<>(
 //        TabActivity.class, true, true);
@@ -37,11 +38,13 @@ public class TabActivityTest {
     //HOW TO TEST DATA PERSISTENCE? LEAVE APP
 //LEFT OFF WITH TESTING AND CREATING RECYCLER VIEW
     @Test
-    public void hasTabActivityTestAll()
-    {
+    public void hasTabActivityTestAll() throws InterruptedException {
         testSuccessfulSignupMain();
 
+        //create content watch that waits for recycler view then if after wait sees pass.
         // Matches Fragment
+        Thread.sleep(7000); // Tell Java to sleep for matches to load from fb
+        likeButtonClickMatches();
         hasTextOnScreenMatches();
         navigation();
 
@@ -90,8 +93,28 @@ public class TabActivityTest {
     public void hasDescriptionMatches(){
 
     }
-    public void likeButtonClickMatches(){
 
+    public void likeButtonClickMatches(){
+        onView(new RecyclerViewMatcher(R.id.my_recycler_view)
+                .atPositionOnView(0, R.id.card_like_button))
+                .perform(click());
+//        onView(new RecyclerViewMatcher(R.id.my_recycler_view)
+//                .atPositionOnView(1, R.id.card_like_button))
+//                .perform(click());
+//        onView(new RecyclerViewMatcher(R.id.my_recycler_view)
+//                .atPositionOnView(2, R.id.card_like_button))
+//                .perform(click());
+//        onView(new RecyclerViewMatcher(R.id.my_recycler_view)
+//                .atPositionOnView(3, R.id.card_like_button))
+//                .perform(click());
+//        onView(new RecyclerViewMatcher(R.id.my_recycler_view)
+//                .atPositionOnView(4, R.id.card_like_button))
+//                .perform(click());
+//        onView(new RecyclerViewMatcher(R.id.my_recycler_view)
+//                .atPositionOnView(5, R.id.card_like_button))
+//                .perform(click());
+
+//                .check(matches(withText("Test text")));
     }
 
     public void hasTextOnScreenMatches()
@@ -104,16 +127,16 @@ public class TabActivityTest {
         //scroll to card and click card at positions
         onView(ViewMatchers.withId(R.id.my_recycler_view))
                 .perform(RecyclerViewActions.actionOnItemAtPosition(0,click()));
-        onView(ViewMatchers.withId(R.id.my_recycler_view))
-                .perform(RecyclerViewActions.actionOnItemAtPosition(1,click()));
-        onView(ViewMatchers.withId(R.id.my_recycler_view))
-                .perform(RecyclerViewActions.actionOnItemAtPosition(2,click()));
-        onView(ViewMatchers.withId(R.id.my_recycler_view))
-                .perform(RecyclerViewActions.actionOnItemAtPosition(3,click()));
-        onView(ViewMatchers.withId(R.id.my_recycler_view))
-                .perform(RecyclerViewActions.actionOnItemAtPosition(4,click()));
-        onView(ViewMatchers.withId(R.id.my_recycler_view))
-                .perform(RecyclerViewActions.actionOnItemAtPosition(5,click()));
+//        onView(ViewMatchers.withId(R.id.my_recycler_view))
+//                .perform(RecyclerViewActions.actionOnItemAtPosition(1,click()));
+//        onView(ViewMatchers.withId(R.id.my_recycler_view))
+//                .perform(RecyclerViewActions.actionOnItemAtPosition(2,click()));
+//        onView(ViewMatchers.withId(R.id.my_recycler_view))
+//                .perform(RecyclerViewActions.actionOnItemAtPosition(3,click()));
+//        onView(ViewMatchers.withId(R.id.my_recycler_view))
+//                .perform(RecyclerViewActions.actionOnItemAtPosition(4,click()));
+//        onView(ViewMatchers.withId(R.id.my_recycler_view))
+//                .perform(RecyclerViewActions.actionOnItemAtPosition(5,click()));
 
         //check text matches, check SO for next steps
         //https://stackoverflow.com/questions/51678563/how-to-access-recyclerview-viewholder-with-espresso
@@ -143,8 +166,10 @@ public class TabActivityTest {
         onView(withId(R.id.textViewProfileLastName))
                 .check(matches(withText("Chang")));
 
+        //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        //Change email for testing each time successfulSaveSettings is run
         onView(withId(R.id.textViewProfileEmail))
-                .check(matches(withText(R.string.test_email_3)));
+                .check(matches(withText(R.string.test_email_4)));
 
         onView(withId(R.id.textViewProfileOccupation))
                 .check(matches(withText("Spanish Teacher")));

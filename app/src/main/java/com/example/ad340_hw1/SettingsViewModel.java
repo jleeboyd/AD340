@@ -14,12 +14,12 @@ public class SettingsViewModel extends ViewModel {
         return db.settingsDao().getSettingsById(emailIds);
     }
 
-    public void updateSettings(Context context, Settings... settings) {
-        AppDatabase db = AppDatabaseSingleton.getDatabase(context);
-        db.getTransactionExecutor().execute(() -> {
-            db.settingsDao().updateSettings(settings);
-        });
-    }
+//    public void updateSettings(Context context, Settings... settings) {
+//        AppDatabase db = AppDatabaseSingleton.getDatabase(context);
+//        db.getTransactionExecutor().execute(() -> {
+//            db.settingsDao().updateSettings(settings);
+//        });
+//    }
 
     public void insertSettings(Context context, Settings... settings) {
         AppDatabase db = AppDatabaseSingleton.getDatabase(context);
@@ -28,11 +28,11 @@ public class SettingsViewModel extends ViewModel {
         });
     }
 
-    public void deleteSettings(Context context, Settings settings) {
-        AppDatabase db = AppDatabaseSingleton.getDatabase(context);
-        db.getTransactionExecutor().execute(() -> {
-            db.settingsDao().delete(settings);
-        });
-    }
+//    public void deleteSettings(Context context, Settings settings) {
+//        AppDatabase db = AppDatabaseSingleton.getDatabase(context);
+//        db.getTransactionExecutor().execute(() -> {
+//            db.settingsDao().delete(settings);
+//        });
+//    }
 }
 

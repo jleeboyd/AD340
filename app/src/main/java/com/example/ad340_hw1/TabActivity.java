@@ -41,16 +41,16 @@ public class TabActivity extends AppCompatActivity implements LikeClickListener 
             Log.i(TAG, b.getString(Constants.KEY_USERNAME)+" tabActivity");
         }
 
-        //for single activity testing
-        else{
-
-            ViewPager viewpager = findViewById(R.id.viewpager);
-            setupViewPager(viewpager, b);
-
-            //toolbar already given due to app creation type
-            TabLayout tabs = findViewById(R.id.tabs);
-            tabs.setupWithViewPager(viewpager);
-        }
+       // // UNCOMMENT for single activity testing @@@@@@@@@@@@@@
+//        else{
+//
+//            ViewPager viewpager = findViewById(R.id.viewpager);
+//            setupViewPager(viewpager, b);
+//
+//            //toolbar already given due to app creation type
+//            TabLayout tabs = findViewById(R.id.tabs);
+//            tabs.setupWithViewPager(viewpager);
+//        }
 
         Log.i(TAG, "onCreate()");
     }

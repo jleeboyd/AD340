@@ -23,13 +23,13 @@ public interface SettingsDao {
     LiveData<List<Settings>> getSettingsById(String[] email);
 
     // Update settings entity in db with Settings entity in app
-    @Update
-    void updateSettings(Settings... settings);
+//    @Update
+//    void updateSettings(Settings... settings);
 
     // Insert new settings into db
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertSettings(Settings... settings);
 
-    @Delete
-    void delete(Settings settings);
+//    @Delete
+//    void delete(Settings settings);
 }

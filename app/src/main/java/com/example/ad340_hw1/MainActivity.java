@@ -66,13 +66,14 @@ public class MainActivity extends AppCompatActivity{
     protected void onRestart() {
         super.onRestart();
 
-        editTextFirst.setText("");
-        editTextLast.setText("");
-        editTextEmail.setText("");
-        editTextUser.setText("");
-        editTextDescription.setText("");
-        editTextOccupation.setText("");
-        date.updateDate(year, month, day);
+        // UNCOMMENT FOR TESTING ROTATION
+//        editTextFirst.setText("");
+//        editTextLast.setText("");
+//        editTextEmail.setText("");
+//        editTextUser.setText("");
+//        editTextDescription.setText("");
+//        editTextOccupation.setText("");
+//        date.updateDate(year, month, day);
 
         Log.i(TAG, "onRestart()");
     }
@@ -82,33 +83,34 @@ public class MainActivity extends AppCompatActivity{
 
         super.onRestoreInstanceState(savedInstanceState);
 
-        if (savedInstanceState.containsKey(Constants.KEY_FIRST_NAME)) {
-            editTextFirst.setText((String)savedInstanceState.get(Constants.KEY_FIRST_NAME));
-        }
-        if (savedInstanceState.containsKey(Constants.KEY_LAST_NAME)) {
-            editTextLast.setText((String)savedInstanceState.get(Constants.KEY_LAST_NAME));
-        }
-        if (savedInstanceState.containsKey(Constants.KEY_EMAIL)) {
-            editTextEmail.setText((String) savedInstanceState.get(Constants.KEY_EMAIL));
-        }
-        if (savedInstanceState.containsKey(Constants.KEY_USERNAME)) {
-            editTextUser.setText((String) savedInstanceState.get(Constants.KEY_USERNAME));
-        }
-        if (savedInstanceState.containsKey(Constants.KEY_DESCRIPTION)) {
-            editTextUser.setText((String) savedInstanceState.get(Constants.KEY_DESCRIPTION));
-        }
-        if (savedInstanceState.containsKey(Constants.KEY_OCCUPATION)) {
-            editTextUser.setText((String) savedInstanceState.get(Constants.KEY_OCCUPATION));
-        }
-
-        //onRestore date picker
-        int myYear = Integer.parseInt((String) savedInstanceState.get(Constants.KEY_YEAR));
-        int myMonth = Integer.parseInt((String) savedInstanceState.get(Constants.KEY_MONTH));
-        int myDay = Integer.parseInt((String) savedInstanceState.get(Constants.KEY_DAY));
-
-        if (savedInstanceState.containsKey(String.valueOf((Constants.KEY_YEAR)))) {
-            date.updateDate(myYear,myMonth,myDay);
-        }
+        //UNCOMMENT FOR TESING ROTATION
+//        if (savedInstanceState.containsKey(Constants.KEY_FIRST_NAME)) {
+//            editTextFirst.setText((String)savedInstanceState.get(Constants.KEY_FIRST_NAME));
+//        }
+//        if (savedInstanceState.containsKey(Constants.KEY_LAST_NAME)) {
+//            editTextLast.setText((String)savedInstanceState.get(Constants.KEY_LAST_NAME));
+//        }
+//        if (savedInstanceState.containsKey(Constants.KEY_EMAIL)) {
+//            editTextEmail.setText((String) savedInstanceState.get(Constants.KEY_EMAIL));
+//        }
+//        if (savedInstanceState.containsKey(Constants.KEY_USERNAME)) {
+//            editTextUser.setText((String) savedInstanceState.get(Constants.KEY_USERNAME));
+//        }
+//        if (savedInstanceState.containsKey(Constants.KEY_DESCRIPTION)) {
+//            editTextUser.setText((String) savedInstanceState.get(Constants.KEY_DESCRIPTION));
+//        }
+//        if (savedInstanceState.containsKey(Constants.KEY_OCCUPATION)) {
+//            editTextUser.setText((String) savedInstanceState.get(Constants.KEY_OCCUPATION));
+//        }
+//
+//        //onRestore date picker
+//        int myYear = Integer.parseInt((String) savedInstanceState.get(Constants.KEY_YEAR));
+//        int myMonth = Integer.parseInt((String) savedInstanceState.get(Constants.KEY_MONTH));
+//        int myDay = Integer.parseInt((String) savedInstanceState.get(Constants.KEY_DAY));
+//
+//        if (savedInstanceState.containsKey(String.valueOf((Constants.KEY_YEAR)))) {
+//            date.updateDate(myYear,myMonth,myDay);
+//        }
 
         Log.i(TAG, "onRestoreInstanceState()");
     }

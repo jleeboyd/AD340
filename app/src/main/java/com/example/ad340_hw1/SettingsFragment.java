@@ -81,14 +81,16 @@ public class SettingsFragment extends Fragment {
             Log.i(TAG, "if");
         }
 
+        // UNCOMMENT FOR TESTING @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
         // If bundle is null set to default user for testing. TabActivity ie skip sign up
-        else {
+//        else {
+//
+////            email =  getResources().getString(R.string.testEmail);
+////            email = "test@gmail.org";
+//            email = "test123@gmail.com";
+//            Log.i(TAG, "else "+ email);
+//        }
 
-//            email =  getResources().getString(R.string.testEmail);
-//            email = "test@gmail.org";
-            email = "test123@gmail.com";
-            Log.i(TAG, "else "+ email);
-        }
 
         // Create the observer to update the UI
         // Anytime new list of Settings, callback executes

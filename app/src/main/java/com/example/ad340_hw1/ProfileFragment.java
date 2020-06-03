@@ -81,9 +81,9 @@ public class ProfileFragment extends Fragment {
 //            Log.i(TAG, bundle.getString(Constants.KEY_USERNAME) + " fragment");
         }
 
-        else {
-            Log.i(TAG, "bundle is null");
-        }
+//        else {
+//            Log.i(TAG, "bundle is null");
+//        }
 
         Log.i(TAG, "onCreateView()");
 
