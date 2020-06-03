@@ -35,39 +35,44 @@ public class TabActivityTest {
 
 //    private static final String TAG = TabActivityTest.class.getSimpleName();
 
-    //HOW TO TEST DATA PERSISTENCE? LEAVE APP
-//LEFT OFF WITH TESTING AND CREATING RECYCLER VIEW
     @Test
     public void hasTabActivityTestAll() throws InterruptedException {
+
         testSuccessfulSignupMain();
 
         //create content watch that waits for recycler view then if after wait sees pass.
         // Matches Fragment
         Thread.sleep(7000); // Tell Java to sleep for matches to load from fb
         likeButtonClickMatches();
+        Thread.sleep(2000);
         hasTextOnScreenMatches();
+        Thread.sleep(2000);
         navigation();
 
         // Profile Fragment
+        Thread.sleep(2000); // Allow app to load
         hasTextOnScreenProfile();
         navigation();
 
         // Settings Fragment
+        Thread.sleep(2000);
         hasTextOnScreenSettings();
         testUnsuccessfulSettings();
+        Thread.sleep(2000);
 
         // Starts where testUnsuccessfulSettings() ends
         successfulSaveSettings();
 
-//        hasImageMatches();
     }
 
-    public void testUnsuccessfulSettings() {
+    public void testUnsuccessfulSettings() throws InterruptedException {
 //        navigation(); for testing
 //        navigation();
         unsuccessfulMaxDistance();
         unsuccessfulPrivacy();
+        Thread.sleep(1000);
         unsuccessfulMinAge();
+        Thread.sleep(1000);
         unsuccessfulMaxAge();
     }
 
@@ -126,7 +131,7 @@ public class TabActivityTest {
 
         //scroll to card and click card at positions
         onView(ViewMatchers.withId(R.id.my_recycler_view))
-                .perform(RecyclerViewActions.actionOnItemAtPosition(0,click()));
+                .perform(RecyclerViewActions.actionOnItemAtPosition(4,click()));
 //        onView(ViewMatchers.withId(R.id.my_recycler_view))
 //                .perform(RecyclerViewActions.actionOnItemAtPosition(1,click()));
 //        onView(ViewMatchers.withId(R.id.my_recycler_view))
@@ -137,21 +142,6 @@ public class TabActivityTest {
 //                .perform(RecyclerViewActions.actionOnItemAtPosition(4,click()));
 //        onView(ViewMatchers.withId(R.id.my_recycler_view))
 //                .perform(RecyclerViewActions.actionOnItemAtPosition(5,click()));
-
-        //check text matches, check SO for next steps
-        //https://stackoverflow.com/questions/51678563/how-to-access-recyclerview-viewholder-with-espresso
-//        onView(ViewMatchers.withId(R.id.my_recycler_view))
-//                .perform(RecyclerViewActions.actionOnItemAtPosition(0,click())
-//                .check(matches(withText(R.string.dean))));
-//        onView(withId(R.id.textViewInfo))
-//                .check(matches(withText(R.string.my_text)));
-         //match text on card
-//        String itemElementText = mActivityRule.getActivity().getResources()
-//                .getString(R.string.dean)
-//                + String.valueOf(1);
-//
-//        onView(withText(itemElementText)).check(matches(isDisplayed()));
-
 
     }
 
@@ -169,7 +159,7 @@ public class TabActivityTest {
         //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
         //Change email for testing each time successfulSaveSettings is run
         onView(withId(R.id.textViewProfileEmail))
-                .check(matches(withText(R.string.test_email_4)));
+                .check(matches(withText(R.string.test_email_5)));
 
         onView(withId(R.id.textViewProfileOccupation))
                 .check(matches(withText("Spanish Teacher")));
@@ -226,7 +216,7 @@ public class TabActivityTest {
     public void unsuccessfulMaxAge() {
         testInputSettings(4, true, true);
         checkToast(R.string.invalid_age_range);
-//        clearSomeText(R.id.editTextMaxAge);
+        clearSomeText(R.id.editTextMaxAge);
     }
 
 

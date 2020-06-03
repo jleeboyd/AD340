@@ -67,13 +67,13 @@ public class MainActivity extends AppCompatActivity{
         super.onRestart();
 
         // UNCOMMENT FOR TESTING ROTATION
-//        editTextFirst.setText("");
-//        editTextLast.setText("");
-//        editTextEmail.setText("");
-//        editTextUser.setText("");
-//        editTextDescription.setText("");
-//        editTextOccupation.setText("");
-//        date.updateDate(year, month, day);
+        editTextFirst.setText("");
+        editTextLast.setText("");
+        editTextEmail.setText("");
+        editTextUser.setText("");
+        editTextDescription.setText("");
+        editTextOccupation.setText("");
+        date.updateDate(year, month, day);
 
         Log.i(TAG, "onRestart()");
     }

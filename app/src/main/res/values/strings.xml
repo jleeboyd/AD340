@@ -109,6 +109,7 @@
     <string name="test_email_2">test@test.net</string>
     <string name="test_email_3">t@g.com</string>
     <string name="test_email_4">r@g.com</string>
+    <string name="test_email_5">r@o.com</string>
 
 
 </resources>
