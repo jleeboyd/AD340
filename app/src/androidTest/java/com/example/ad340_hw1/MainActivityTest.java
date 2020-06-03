@@ -105,14 +105,14 @@ public class MainActivityTest {
     }
 
     //onRestore/onSave not being covered. screen may not actually be rotating
-    @Test
-    public void testScreenRotation()
-    {
-        testEnterFields(13,true,false);
-        mActivityRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
-//        mActivityRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        hasTextOnScreenRotation();
-    }
+//    @Test
+//    public void testScreenRotation()
+//    {
+//        testEnterFields(13,true,false);
+//        mActivityRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
+////        mActivityRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+//        hasTextOnScreenRotation();
+//    }
 
     //passes in android studio, but fails in circleCI
     //<date picker view is not displayed to user>
@@ -247,7 +247,7 @@ public class MainActivityTest {
         {
             if (hasContent)
             {
-                onView(withId(R.id.editTextEmail)).perform(typeText("test@test.net"));
+                onView(withId(R.id.editTextEmail)).perform(typeText("t@g.com"));
             }
 
             else {

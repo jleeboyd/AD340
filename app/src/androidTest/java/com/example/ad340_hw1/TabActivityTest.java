@@ -34,6 +34,7 @@ public class TabActivityTest {
 
 //    private static final String TAG = TabActivityTest.class.getSimpleName();
 
+    //HOW TO TEST DATA PERSISTENCE? LEAVE APP
 //LEFT OFF WITH TESTING AND CREATING RECYCLER VIEW
     @Test
     public void hasTabActivityTestAll()
@@ -143,7 +144,7 @@ public class TabActivityTest {
                 .check(matches(withText("Chang")));
 
         onView(withId(R.id.textViewProfileEmail))
-                .check(matches(withText(R.string.test_email_2)));
+                .check(matches(withText(R.string.test_email_3)));
 
         onView(withId(R.id.textViewProfileOccupation))
                 .check(matches(withText("Spanish Teacher")));
@@ -262,7 +263,7 @@ public class TabActivityTest {
         }
 
         if(submit) {
-            onView(withId(R.id.buttonSaveSettings)).perform(click());
+            onView(withId(R.id.buttonSaveSettings)).perform(ViewActions.scrollTo(), click());
         }
 
     }
