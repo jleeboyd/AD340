@@ -50,15 +50,16 @@ public class TabActivityTest {
         navigation();
 
         // Profile Fragment
-        Thread.sleep(2000); // Allow app to load
+        Thread.sleep(2000); // Allow app to load for CircleCI
         hasTextOnScreenProfile();
         navigation();
 
         // Settings Fragment
         Thread.sleep(2000);
         hasTextOnScreenSettings();
-        testUnsuccessfulSettings();
         Thread.sleep(2000);
+        testUnsuccessfulSettings();
+        Thread.sleep(3000);
 
         // Starts where testUnsuccessfulSettings() ends
         successfulSaveSettings();
@@ -69,10 +70,11 @@ public class TabActivityTest {
 //        navigation(); for testing
 //        navigation();
         unsuccessfulMaxDistance();
+        Thread.sleep(3000);
         unsuccessfulPrivacy();
-        Thread.sleep(1000);
+        Thread.sleep(3000);
         unsuccessfulMinAge();
-        Thread.sleep(1000);
+        Thread.sleep(3000);
         unsuccessfulMaxAge();
     }
 
