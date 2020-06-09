@@ -1,4 +1,4 @@
-## AD 340
+## AD 340 Mobile Application Development
 <br/>
 Mobile Application Dating App
 <br/>
