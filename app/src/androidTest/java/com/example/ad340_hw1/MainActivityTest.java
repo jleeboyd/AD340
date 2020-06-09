@@ -250,7 +250,7 @@ public class MainActivityTest {
                 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
                 //Create variable based on time and set to email. So testing doesn't have to create a new email
                 //for new db entry each time.
-                onView(withId(R.id.editTextEmail)).perform(typeText("r@o.com"));
+                onView(withId(R.id.editTextEmail)).perform(typeText("e@c.com"));
             }
 
             else {

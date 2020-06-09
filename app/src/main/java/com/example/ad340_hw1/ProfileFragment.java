@@ -36,11 +36,6 @@ public class ProfileFragment extends Fragment {
     String desc;
     String occu;
 
-//    @Override
-//    public void onAttach(Context context) {
-//        super.onAttach(context);
-//        Log.i(TAG, "onAttach()");
-//    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -76,18 +71,9 @@ public class ProfileFragment extends Fragment {
             textViewAge.setText(age);
             textViewDescription.setText(desc);
             textViewOccupation.setText(occu);
-
-            Log.i(TAG, "bundle is not null");
-//            Log.i(TAG, bundle.getString(Constants.KEY_USERNAME) + " fragment");
         }
 
-//        else {
-//            Log.i(TAG, "bundle is null");
-//        }
-
-        Log.i(TAG, "onCreateView()");
-
-        return view; //inflater.inflate(R.layout.fragment_profile, null, true);
+        return view;
     }
 
     @Override

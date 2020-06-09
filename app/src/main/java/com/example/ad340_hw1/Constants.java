@@ -1,6 +1,9 @@
 package com.example.ad340_hw1;
 
 public class Constants {
+
+    public static final String KEY_MAX_DISTANCE = "maxd";
+
     static final String KEY_FIRST_NAME = "@string/a";
     static final String KEY_LAST_NAME = "@string/b";
     static final String KEY_EMAIL = "@string/c";

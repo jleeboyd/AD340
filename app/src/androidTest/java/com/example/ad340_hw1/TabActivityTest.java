@@ -101,6 +101,10 @@ public class TabActivityTest {
 
     }
 
+    public void changeLocationMatches() {
+        // Change location of the emulator, then check matches displayed
+    }
+
     public void likeButtonClickMatches(){
         onView(new RecyclerViewMatcher(R.id.my_recycler_view)
                 .atPositionOnView(0, R.id.card_like_button))
@@ -133,7 +137,7 @@ public class TabActivityTest {
 
         //scroll to card and click card at positions
         onView(ViewMatchers.withId(R.id.my_recycler_view))
-                .perform(RecyclerViewActions.actionOnItemAtPosition(4,click()));
+                .perform(RecyclerViewActions.actionOnItemAtPosition(3,click()));
 //        onView(ViewMatchers.withId(R.id.my_recycler_view))
 //                .perform(RecyclerViewActions.actionOnItemAtPosition(1,click()));
 //        onView(ViewMatchers.withId(R.id.my_recycler_view))
@@ -161,7 +165,7 @@ public class TabActivityTest {
         //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
         //Change email for testing each time successfulSaveSettings is run
         onView(withId(R.id.textViewProfileEmail))
-                .check(matches(withText(R.string.test_email_5)));
+                .check(matches(withText(R.string.test_email_6)));
 
         onView(withId(R.id.textViewProfileOccupation))
                 .check(matches(withText("Spanish Teacher")));
