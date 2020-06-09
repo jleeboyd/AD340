@@ -1,4 +1,4 @@
-## North Seattle College AD340 Mobile Application Development
+## AD340 Mobile Application Development
 <br/>
 Mobile Application Dating App
 <br/>
