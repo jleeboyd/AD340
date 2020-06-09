@@ -116,7 +116,6 @@ public class TabActivity extends AppCompatActivity{
     @Override
     protected void onPause() {
         super.onPause();
-//        vm.clear();
         Log.i(TAG, "onPause()");
     }
 

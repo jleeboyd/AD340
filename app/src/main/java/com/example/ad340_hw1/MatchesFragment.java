@@ -175,8 +175,14 @@ public class MatchesFragment extends Fragment {//implements LikeClickListener{
     @Override
     public void onPause() {
         super.onPause();
-        vm.clear();
+//        vm.clear();
         Log.i(TAG, "onPause()");
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        vm.clear();
     }
 
 
