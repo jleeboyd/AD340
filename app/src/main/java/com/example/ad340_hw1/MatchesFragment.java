@@ -47,9 +47,11 @@ public class MatchesFragment extends Fragment {//implements LikeClickListener{
 
     LocationManager locationManager;
     // Default Seattle Location
-    double longitudeGPS = 47.6059;
-    double latitudeGPS  = -122.3296;
+//    double longitudeGPS = 47.6059;
+//    double latitudeGPS  = -122.3296;
     boolean hasMatches = false;
+    double longitudeGPS;
+    double latitudeGPS;
 
     //for fragments, need to use getView().findViewById ;
     //getActivity().getIntent();
@@ -71,13 +73,13 @@ public class MatchesFragment extends Fragment {//implements LikeClickListener{
         toggleGPSUpdates();
 
         //new up customer contentAdapter class if locationManager doesn't reset location
-        if(latitudeGPS == 47.6059 && longitudeGPS == -122.3296)
-        {
-            ContentAdapter adapter = new ContentAdapter(recyclerView.getContext());
-            recyclerView.setAdapter(adapter);
-            recyclerView.setHasFixedSize(true);
-            recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        }
+//        if(latitudeGPS == 47.6059 && longitudeGPS == -122.3296)
+//        {
+//            ContentAdapter adapter = new ContentAdapter(recyclerView.getContext());
+//            recyclerView.setAdapter(adapter);
+//            recyclerView.setHasFixedSize(true);
+//            recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+//        }
 
         return recyclerView;
     }

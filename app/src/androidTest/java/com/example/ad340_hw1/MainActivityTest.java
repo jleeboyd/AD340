@@ -77,14 +77,6 @@ public class MainActivityTest {
     {
         onView(withId(R.id.editTextFirstName))
                 .check(matches(withText(R.string.testFirstName)));
-        onView(withId(R.id.editTextLastName))
-                .check(matches(withText(R.string.testLastName)));
-        onView(withId(R.id.editTextEmail))
-                .check(matches(withText(R.string.testEmail)));
-        onView(withId(R.id.editTextDescription))
-                .check(matches(withText(R.string.testDescription)));
-        onView(withId(R.id.editTextOccupation))
-                .check(matches(withText(R.string.testOccupation)));
 
     }
 
@@ -108,7 +100,7 @@ public class MainActivityTest {
 //    @Test
 //    public void testScreenRotation()
 //    {
-//        testEnterFields(13,true,false);
+//        testEnterFields(0,true,false);
 //        mActivityRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
 ////        mActivityRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 //        hasTextOnScreenRotation();
