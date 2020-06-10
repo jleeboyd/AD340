@@ -68,9 +68,9 @@ public class FirebaseMatchesViewModel {
     }
 
     //clear listeners for onPause() in model
-    public void clear() {
-        model.clear();
-    }
+//    public void clear() {
+//        model.clear();
+//    }
 
     public void updateLiked(MatchesItem item) {
         model.updateLike(item);

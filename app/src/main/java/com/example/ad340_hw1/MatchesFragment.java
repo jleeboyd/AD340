@@ -56,9 +56,6 @@ public class MatchesFragment extends Fragment {//implements LikeClickListener{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
-
         Log.i(TAG, "onCreate()");
 
     }
@@ -86,38 +83,38 @@ public class MatchesFragment extends Fragment {//implements LikeClickListener{
     }
 
     // Start GPS
-    private boolean checkLocation() {
-        if(!isLocationEnabled()) {
-            showAlert();
-        }
-        return isLocationEnabled();
-    }
-
-    private boolean isLocationEnabled() {
-        return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
-    }
+//    private boolean checkLocation() {
+//        if(!isLocationEnabled()) {
+//            showAlert();
+//        }
+//        return isLocationEnabled();
+//    }
+//
+//    private boolean isLocationEnabled() {
+//        return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+//    }
 
     // Show alert is location services isn't enabled
-    private void showAlert() {
-        final AlertDialog.Builder dialog = new AlertDialog.Builder(context);
-        dialog.setTitle(R.string.enable_location)
-                .setMessage(getString(R.string.location_message))
-                .setPositiveButton(R.string.location_settings, (paramDialogInterface, paramInt) -> {
-                    Intent myIntent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-                    startActivity(myIntent);
-                })
-                .setNegativeButton(R.string.location_cancel, (paramDialogInterface, paramInt) -> {});
-        dialog.show();
-    }
+//    private void showAlert() {
+//        final AlertDialog.Builder dialog = new AlertDialog.Builder(context);
+//        dialog.setTitle(R.string.enable_location)
+//                .setMessage(getString(R.string.location_message))
+//                .setPositiveButton(R.string.location_settings, (paramDialogInterface, paramInt) -> {
+//                    Intent myIntent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+//                    startActivity(myIntent);
+//                })
+//                .setNegativeButton(R.string.location_cancel, (paramDialogInterface, paramInt) -> {});
+//        dialog.show();
+//    }
 
     // TO DO: no toggle button. Just make sure everytime location (requestLocationUpdates) is called, matches will be
     // Filtered out via gps coordinate vs gps coordinate of the phone. sqrt(x^2 + y^2) <-- distance formula
     public void toggleGPSUpdates() {
-        if(!checkLocation()) {
-            return;
-        }
+//        if(!checkLocation()) {
+//            return;
+//        }
 
-        else {
+//        else {
             if (ActivityCompat.checkSelfPermission(context, android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED ||
                     ActivityCompat.checkSelfPermission(context, android.Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
 
@@ -125,7 +122,7 @@ public class MatchesFragment extends Fragment {//implements LikeClickListener{
                 locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5 * 1000, 10, locationListenerNetwork);
                 Toast.makeText(getContext(), R.string.gps_provider_started_running, Toast.LENGTH_LONG).show();
             }
-        }
+//        }
     }
 
     private final LocationListener locationListenerNetwork = new LocationListener() {

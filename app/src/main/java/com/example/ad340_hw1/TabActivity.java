@@ -45,15 +45,15 @@ public class TabActivity extends AppCompatActivity{
         }
 
        // // UNCOMMENT for single activity testing @@@@@@@@@@@@@@
-        else{
-
-            ViewPager viewpager = findViewById(R.id.viewpager);
-            setupViewPager(viewpager, b);
-
-            //toolbar already given due to app creation type
-            TabLayout tabs = findViewById(R.id.tabs);
-            tabs.setupWithViewPager(viewpager);
-        }
+//        else{
+//
+//            ViewPager viewpager = findViewById(R.id.viewpager);
+//            setupViewPager(viewpager, b);
+//
+//            //toolbar already given due to app creation type
+//            TabLayout tabs = findViewById(R.id.tabs);
+//            tabs.setupWithViewPager(viewpager);
+//        }
 
         Log.i(TAG, "onCreate()");
     }
