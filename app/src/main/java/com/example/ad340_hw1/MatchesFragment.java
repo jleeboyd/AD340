@@ -179,12 +179,6 @@ public class MatchesFragment extends Fragment {//implements LikeClickListener{
         Log.i(TAG, "onPause()");
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        vm.clear();
-    }
-
 
     //cardview
     public class ViewHolder extends RecyclerView.ViewHolder {
