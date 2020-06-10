@@ -68,6 +68,14 @@ public class MatchesItem implements Parcelable {
         return uid;
     }
 
+    public String getLat() {
+        return lat;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
 //    @Exclude
 //    public Map(String, Object> toMap() {
 //        HashMap<String, Object> result = new HashMap<>();
@@ -84,6 +92,9 @@ public class MatchesItem implements Parcelable {
     public void setUid(String uid) {
         this.uid = uid;
     }
+
+
+
     @Override
     public int describeContents() {
         return 0;

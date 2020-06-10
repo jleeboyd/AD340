@@ -1,8 +1,13 @@
 package com.example.ad340_hw1;
 
+import android.content.Context;
 import android.content.Intent;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -14,16 +19,14 @@ import com.google.android.material.tabs.TabLayout;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TabActivity extends AppCompatActivity implements LikeClickListener {
+public class TabActivity extends AppCompatActivity{
 
     private static final String TAG = TabActivity.class.getSimpleName();
-    private FirebaseMatchesViewModel vm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tab);
-
 
         Intent intent = getIntent();
         Bundle b = intent.getExtras();
@@ -66,8 +69,6 @@ public class TabActivity extends AppCompatActivity implements LikeClickListener 
         adapter.addFragment(matchesFragment, "MATCHES");
         adapter.addFragment(profileFragment, "PROFILE");
         adapter.addFragment(settingsFragment, "SETTINGS");
-//        adapter.addFragment(new ProfileFragment(), "PROFILE");
-//        adapter.addFragment(new SettingsFragment(), "SETTINGS");
 
         // Add bundle to profile fragment
         adapter.getItem(1).setArguments(b); //uncomment for working app bundle passed from activity
@@ -78,10 +79,6 @@ public class TabActivity extends AppCompatActivity implements LikeClickListener 
         viewpager.setAdapter(adapter);
     }
 
-    @Override
-    public void onLikeClick(MatchesItem item) {
-
-    }
 
     static class Adapter extends FragmentPagerAdapter {
         private final List<Fragment> mFragmentList = new ArrayList<>();
@@ -114,11 +111,11 @@ public class TabActivity extends AppCompatActivity implements LikeClickListener 
         }
     }
 
+
     //call clear listeners
     @Override
     protected void onPause() {
         super.onPause();
-//        vm.clear();
         Log.i(TAG, "onPause()");
     }
 

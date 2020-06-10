@@ -40,10 +40,11 @@ public class FirebaseMatchesModel {
                 }));
         listeners.add(listener);
     }
-    public void clear() {
-        // Clear all the listeners onPause
-        listeners.forEach(ListenerRegistration::remove);
-    }
+    // UNCOMMENT if called in viewmodel
+//    public void clear() {
+//        // Clear all the listeners onPause
+//        listeners.forEach(ListenerRegistration::remove);
+//    }
 
     //add update like here
     public void updateLike(MatchesItem item) {

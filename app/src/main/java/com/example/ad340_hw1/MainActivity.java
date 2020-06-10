@@ -62,26 +62,26 @@ public class MainActivity extends AppCompatActivity{
     }
 
     //onRestart from other activity, reset editText fields and datepicker
-    @Override
-    protected void onRestart() {
-        super.onRestart();
+//    @Override
+//    protected void onRestart() {
+//        super.onRestart();
+//
+//        // UNCOMMENT FOR TESTING ROTATION
+//        editTextFirst.setText("");
+//        editTextLast.setText("");
+//        editTextEmail.setText("");
+//        editTextUser.setText("");
+//        editTextDescription.setText("");
+//        editTextOccupation.setText("");
+//        date.updateDate(year, month, day);
+//
+//        Log.i(TAG, "onRestart()");
+//    }
 
-        // UNCOMMENT FOR TESTING ROTATION
-        editTextFirst.setText("");
-        editTextLast.setText("");
-        editTextEmail.setText("");
-        editTextUser.setText("");
-        editTextDescription.setText("");
-        editTextOccupation.setText("");
-        date.updateDate(year, month, day);
-
-        Log.i(TAG, "onRestart()");
-    }
-
-    @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-
-        super.onRestoreInstanceState(savedInstanceState);
+//    @Override
+//    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+//
+//        super.onRestoreInstanceState(savedInstanceState);
 
         //UNCOMMENT FOR TESING ROTATION
 //        if (savedInstanceState.containsKey(Constants.KEY_FIRST_NAME)) {
@@ -112,8 +112,8 @@ public class MainActivity extends AppCompatActivity{
 //            date.updateDate(myYear,myMonth,myDay);
 //        }
 
-        Log.i(TAG, "onRestoreInstanceState()");
-    }
+//        Log.i(TAG, "onRestoreInstanceState()");
+//    }
 
     @Override
     public void onSaveInstanceState(Bundle outState) {

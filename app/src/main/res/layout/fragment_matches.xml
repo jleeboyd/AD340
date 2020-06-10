@@ -55,6 +55,19 @@
             android:textColor="@color/black"
             android:textSize="@dimen/article_subheading"/>
 
+        <TextView
+            android:id="@+id/card_long"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/card_text"
+            android:layout_marginStart="@dimen/md_keylines"
+            android:layout_marginEnd="@dimen/md_keylines"
+            tools:text="@string/my_text"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textSize="@dimen/article_subheading"/>
+
 <!--        <Button-->
 <!--            android:id="@+id/action_button"-->
 <!--            android:layout_width="wrap_content"-->
