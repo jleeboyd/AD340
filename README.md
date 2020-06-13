@@ -1,5 +1,20 @@
 ## AD340 Mobile Application Development
 <br/>
+This course covers core concepts for android app development
+<br/>
+Topics include:
+Android activities & UI elements
+Android Layout
+Dependency management
+Android testing & debugging
+Menus & navigation 
+Complex UI with fragments
+Asynchronous tasks, services & notifications
+Data storage & content providers
+Graphics & animation
+Application deployment
+Using Continuous Integration with Android
+<br/>
 Mobile Application Dating App
 <br/>
 <br/>
