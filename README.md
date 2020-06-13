@@ -1,8 +1,9 @@
 ## AD340 Mobile Application Development
 <br/>
-### This course covers core concepts for android app development in the context of creating a mobile dating app
+This course covers core concepts for android app development in the context of creating a mobile dating app
 <br/>
-### Topics include:
+<br/>
+Topics include:
 <br/>
 Android activities & UI elements
 <br/>
