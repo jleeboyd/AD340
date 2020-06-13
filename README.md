@@ -4,16 +4,27 @@ This course covers core concepts for android app development
 <br/>
 Topics include:
 Android activities & UI elements
+<br/>
 Android Layout
+<br/>
 Dependency management
+<br/>
 Android testing & debugging
+<br/>
 Menus & navigation 
+<br/>
 Complex UI with fragments
+<br/>
 Asynchronous tasks, services & notifications
+<br/>
 Data storage & content providers
+<br/>
 Graphics & animation
+<br/>
 Application deployment
+<br/>
 Using Continuous Integration with Android
+<br/>
 <br/>
 Mobile Application Dating App
 <br/>
