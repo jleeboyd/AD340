@@ -67,7 +67,7 @@ public class FirebaseMatchesViewModel {
         );
     }
 
-    //clear listeners for onPause() in model
+//    //clear listeners for onPause() in model
 //    public void clear() {
 //        model.clear();
 //    }

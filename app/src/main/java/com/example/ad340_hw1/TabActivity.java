@@ -70,6 +70,9 @@ public class TabActivity extends AppCompatActivity{
         adapter.addFragment(profileFragment, "PROFILE");
         adapter.addFragment(settingsFragment, "SETTINGS");
 
+        // Add to mathces frag
+        adapter.getItem(0).setArguments(b);
+
         // Add bundle to profile fragment
         adapter.getItem(1).setArguments(b); //uncomment for working app bundle passed from activity
 
@@ -113,10 +116,10 @@ public class TabActivity extends AppCompatActivity{
 
 
     //call clear listeners
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Log.i(TAG, "onPause()");
-    }
+//    @Override
+//    protected void onPause() {
+//        super.onPause();
+//        Log.i(TAG, "onPause()");
+//    }
 
 }

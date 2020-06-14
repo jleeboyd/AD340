@@ -118,4 +118,6 @@
     <string name="gps_provider_started_running">GPS provider started running</string>
     <string name="gps_provider_update">GPS Provider update</string>
     <string name="test_email_6">e@c.com</string>
+    <string name="match">match</string>
+    <string name="phone">phone</string>
 </resources>

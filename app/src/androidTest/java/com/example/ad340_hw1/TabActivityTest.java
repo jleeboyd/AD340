@@ -42,10 +42,12 @@ public class TabActivityTest {
 
         //create content watch that waits for recycler view then if after wait sees pass.
         // Matches Fragment
-        Thread.sleep(10000); // Tell Java to sleep for matches to load from fb
+        Thread.sleep(7000); // Tell Java to sleep for matches to load from fb
+//        locationToast();
 //        likeButtonClickMatches();
-        Thread.sleep(2000);
+//        Thread.sleep(2000);
 //        hasTextOnScreenMatches();
+
         Thread.sleep(2000);
         navigation();
 
@@ -91,6 +93,9 @@ public class TabActivityTest {
         onView(withId(R.id.viewpager)).perform(ViewActions.swipeLeft());
     }
 
+    public void locationToast(){
+        checkToast(R.string.gps_provider_started_running);
+    }
     public void hasImageMatches(){
 //        onView(ViewMatchers.withId(R.id.my_recycler_view).atPs
     }
@@ -137,7 +142,7 @@ public class TabActivityTest {
 
         //scroll to card and click card at positions
         onView(ViewMatchers.withId(R.id.my_recycler_view))
-                .perform(RecyclerViewActions.actionOnItemAtPosition(3,click()));
+                .perform(RecyclerViewActions.actionOnItemAtPosition(0,click()));
 //        onView(ViewMatchers.withId(R.id.my_recycler_view))
 //                .perform(RecyclerViewActions.actionOnItemAtPosition(1,click()));
 //        onView(ViewMatchers.withId(R.id.my_recycler_view))
