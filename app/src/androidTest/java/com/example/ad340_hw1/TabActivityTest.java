@@ -44,26 +44,27 @@ public class TabActivityTest {
         // Matches Fragment
         Thread.sleep(7000); // Tell Java to sleep for matches to load from fb
 //        locationToast();
-//        likeButtonClickMatches();
+        likeButtonClickMatches();
 //        Thread.sleep(2000);
 //        hasTextOnScreenMatches();
-        Thread.sleep(2000);
-        navigation();
 
-        // Profile Fragment
-        Thread.sleep(2000); // Allow app to load for CircleCI
-        hasTextOnScreenProfile();
-        navigation();
-
-        // Settings Fragment
-        Thread.sleep(2000);
-        hasTextOnScreenSettings();
-        Thread.sleep(2000);
-        testUnsuccessfulSettings();
-        Thread.sleep(3000);
-
-        // Starts where testUnsuccessfulSettings() ends
-        successfulSaveSettings();
+//        Thread.sleep(2000);
+//        navigation();
+//
+//        // Profile Fragment
+//        Thread.sleep(2000); // Allow app to load for CircleCI
+//        hasTextOnScreenProfile();
+//        navigation();
+//
+//        // Settings Fragment
+//        Thread.sleep(2000);
+//        hasTextOnScreenSettings();
+//        Thread.sleep(2000);
+//        testUnsuccessfulSettings();
+//        Thread.sleep(3000);
+//
+//        // Starts where testUnsuccessfulSettings() ends
+//        successfulSaveSettings();
 
     }
 
