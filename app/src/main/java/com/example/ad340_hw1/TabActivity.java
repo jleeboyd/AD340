@@ -41,21 +41,21 @@ public class TabActivity extends AppCompatActivity{
             TabLayout tabs = findViewById(R.id.tabs);
             tabs.setupWithViewPager(viewpager);
 
-//            Log.i(TAG, b.getString(Constants.KEY_USERNAME)+" tabActivity");
+            Log.i(TAG, b.getString(Constants.KEY_USERNAME)+" tabActivity");
         }
 
        // // UNCOMMENT for single activity testing @@@@@@@@@@@@@@
-        else{
+//        else{
+//
+//            ViewPager viewpager = findViewById(R.id.viewpager);
+//            setupViewPager(viewpager, b);
+//
+//            //toolbar already given due to app creation type
+//            TabLayout tabs = findViewById(R.id.tabs);
+//            tabs.setupWithViewPager(viewpager);
+//        }
 
-            ViewPager viewpager = findViewById(R.id.viewpager);
-            setupViewPager(viewpager, b);
-
-            //toolbar already given due to app creation type
-            TabLayout tabs = findViewById(R.id.tabs);
-            tabs.setupWithViewPager(viewpager);
-        }
-
-//        Log.i(TAG, "onCreate()");
+        Log.i(TAG, "onCreate()");
     }
 
     //add fragments to tabs

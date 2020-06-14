@@ -46,7 +46,7 @@ public class TabActivityTest {
 //        locationToast();
 //        likeButtonClickMatches();
 //        Thread.sleep(2000);
-        hasTextOnScreenMatches();
+//        hasTextOnScreenMatches();
 
         Thread.sleep(2000);
         navigation();
