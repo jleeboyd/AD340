@@ -78,17 +78,16 @@ public class SettingsFragment extends Fragment {
 
             // Get email from sign up bundle
             email = bundle.getString(Constants.KEY_EMAIL);
-            Log.i(TAG, "if");
         }
 
-        // UNCOMMENT FOR TESTING @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-        // If bundle is null set to default user for testing. TabActivity ie skip sign up
+////         UNCOMMENT FOR TESTING @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+////         If bundle is null set to default user for testing. TabActivity ie skip sign up
 //        else {
 //
 ////            email =  getResources().getString(R.string.testEmail);
 ////            email = "test@gmail.org";
 //            email = "test123@gmail.com";
-//            Log.i(TAG, "else "+ email);
+////            Log.i(TAG, "else "+ email);
 //        }
 
 
@@ -120,7 +119,7 @@ public class SettingsFragment extends Fragment {
         // Onclick save button update changes to settings based on editText values and send data to db
         buttonSaveSettings.setOnClickListener(v -> {
 
-            Log.i(TAG, "click");
+//            Log.i(TAG, "click");
             Settings settings = new Settings();
 
             // Set no errors to true

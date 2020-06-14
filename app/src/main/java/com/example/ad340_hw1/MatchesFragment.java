@@ -1,7 +1,6 @@
 package com.example.ad340_hw1;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.LocationManager;
 import android.os.Bundle;
@@ -14,109 +13,112 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.provider.Settings;
-
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.squareup.picasso.Picasso;
-
 import android.location.LocationListener;
 import android.location.Location;
-
 import java.util.ArrayList;
-import java.util.Objects;
+import java.util.List;
 
-//import static androidx.core.content.ContextCompat.getSystemService;
 
-public class MatchesFragment extends Fragment {//implements LikeClickListener{
+public class MatchesFragment extends Fragment {
 
     private static final String TAG = MatchesFragment.class.getSimpleName();
 
     public FirebaseMatchesViewModel vm;
-    public ArrayList<MatchesItem> matchesItem;
-//    private LikeClickListener listener;
     public RecyclerView recyclerView;
 
     public Context context;
 
     LocationManager locationManager;
-    // Default Seattle Location
-//    double longitudeGPS = 47.6059;
-//    double latitudeGPS  = -122.3296;
+
     boolean hasMatches = false;
     double longitudeGPS;
     double latitudeGPS;
 
+    // For settings max distance matches filter default
+    int maxDistance = 10;
+    String email;
+    private SettingsViewModel settingsViewModel;
+
     //for fragments, need to use getView().findViewById ;
     //getActivity().getIntent();
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        Log.i(TAG, "onCreate()");
-
-    }
+//    @Override
+//    public void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        Log.i(TAG, "onCreate()");
+//    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
-//        RecyclerView recyclerView = (RecyclerView) inflater.inflate(R.layout.recycler_view, container, false);
         recyclerView = (RecyclerView) inflater.inflate(R.layout.recycler_view, container, false);
+
+        // New up Settings vm
+        settingsViewModel = new ViewModelProvider(this).get(SettingsViewModel.class);
+        Bundle bundle = getArguments();
+
+        // If new user signs up set views based on db data
+        if (bundle != null) {
+            // Get email from sign up bundle
+            email = bundle.getString(Constants.KEY_EMAIL);
+        }
+
+////         UNCOMMENT FOR TESTING @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+////         If bundle is null set to default user for testing. TabActivity ie skip sign up
+//        else {
+//
+////            email =  getResources().getString(R.string.testEmail);
+////            email = "test@gmail.org";
+//            email = "test123@gmail.com";
+//        }
+
+        // Create the observer to update the max distance for matches
+        // Anytime new list of Settings, callback executes
+        final Observer<List<com.example.ad340_hw1.Settings>> getSettingsObserver = newSettings -> {
+
+            // Null checks
+            if(newSettings == null || newSettings.size() <= 0) {
+                return;
+            }
+
+            com.example.ad340_hw1.Settings settings = newSettings.get(0);
+            if (settings == null) {
+                return;
+            }
+
+            // Code we want to execute when settings change
+            maxDistance = settings.getMaxDistance();
+        };
+
+        String[] emails = { email };
+        settingsViewModel.loadSettingsById(recyclerView.getContext(), emails).observe((LifecycleOwner) recyclerView.getContext(), getSettingsObserver);
 
         locationManager = (LocationManager)getActivity().getSystemService(Context.LOCATION_SERVICE);
         context = getActivity();
         toggleGPSUpdates();
 
         //new up customer contentAdapter class if locationManager doesn't reset location
-//        if(latitudeGPS == 47.6059 && longitudeGPS == -122.3296)
-//        {
-//            ContentAdapter adapter = new ContentAdapter(recyclerView.getContext());
-//            recyclerView.setAdapter(adapter);
-//            recyclerView.setHasFixedSize(true);
-//            recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-//        }
+        if(latitudeGPS == 47.6059 && longitudeGPS == -122.3296)
+        {
+            ContentAdapter adapter = new ContentAdapter(recyclerView.getContext());
+            recyclerView.setAdapter(adapter);
+            recyclerView.setHasFixedSize(true);
+            recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        }
 
         return recyclerView;
     }
 
-    // Start GPS
-//    private boolean checkLocation() {
-//        if(!isLocationEnabled()) {
-//            showAlert();
-//        }
-//        return isLocationEnabled();
-//    }
-//
-//    private boolean isLocationEnabled() {
-//        return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
-//    }
-
-    // Show alert is location services isn't enabled
-//    private void showAlert() {
-//        final AlertDialog.Builder dialog = new AlertDialog.Builder(context);
-//        dialog.setTitle(R.string.enable_location)
-//                .setMessage(getString(R.string.location_message))
-//                .setPositiveButton(R.string.location_settings, (paramDialogInterface, paramInt) -> {
-//                    Intent myIntent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-//                    startActivity(myIntent);
-//                })
-//                .setNegativeButton(R.string.location_cancel, (paramDialogInterface, paramInt) -> {});
-//        dialog.show();
-//    }
-
     // TO DO: no toggle button. Just make sure everytime location (requestLocationUpdates) is called, matches will be
     // Filtered out via gps coordinate vs gps coordinate of the phone. sqrt(x^2 + y^2) <-- distance formula
     public void toggleGPSUpdates() {
-//        if(!checkLocation()) {
-//            return;
-//        }
-
-//        else {
             if (ActivityCompat.checkSelfPermission(context, android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED ||
                     ActivityCompat.checkSelfPermission(context, android.Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
 
@@ -158,25 +160,24 @@ public class MatchesFragment extends Fragment {//implements LikeClickListener{
     };
     // End GPS
 
-    @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-//        listener = null;
-        Log.i(TAG, "onDetach()");
-    }
+//    @Override
+//    public void onAttach(@NonNull Context context) {
+//        super.onAttach(context);
+//    }
+//
+//    @Override
+//    public void onDetach() {
+//        super.onDetach();
+//        Log.i(TAG, "onDetach()");
+//    }
 
     //clear here
-    @Override
-    public void onPause() {
-        super.onPause();
+//    @Override
+//    public void onPause() {
+//        super.onPause();
 //        vm.clear();
-        Log.i(TAG, "onPause()");
-    }
+////        Log.i(TAG, "onPause()");
+//    }
 
 
     //cardview
@@ -231,7 +232,7 @@ public class MatchesFragment extends Fragment {//implements LikeClickListener{
                         match.setLiked(isLiked); //changing liked value
                         match.setUid(matchUid); //document path
                         vm.updateLiked(match);
-                        Log.i(TAG, String.valueOf(match.getLiked()));
+//                        Log.i(TAG, String.valueOf(match.getLiked()));
 
                         Toast toast = Toast.makeText(v.getContext(), unlikeBtnMsg, Toast.LENGTH_SHORT);
                         toast.show();
@@ -244,12 +245,12 @@ public class MatchesFragment extends Fragment {//implements LikeClickListener{
                         match.setLiked(isLiked);
                         match.setUid(matchUid);
                         vm.updateLiked(match);
-                        Log.i(TAG, String.valueOf(match.getLiked()));
+//                        Log.i(TAG, String.valueOf(match.getLiked()));
 
                         Toast toast = Toast.makeText(v.getContext(), likeBtnMsg, Toast.LENGTH_SHORT);
                         toast.show();
                     }
-                    Log.i(TAG, matchName);
+//                    Log.i(TAG, matchName);
 
                 }
             });
@@ -277,6 +278,8 @@ public class MatchesFragment extends Fragment {//implements LikeClickListener{
 
         private FirebaseMatchesViewModel vm;
 
+        private boolean isCalled = false;
+
 
         public ContentAdapter(Context context) {
 
@@ -289,10 +292,11 @@ public class MatchesFragment extends Fragment {//implements LikeClickListener{
 
             // Grab data from firebase and store to local var
             vm = new FirebaseMatchesViewModel();
+
             vm.getMatchItems(
                     (ArrayList<MatchesItem> matches) -> {
-                        //grabs names of
-                        for(int i = 0; i < matches.size(); i++){
+
+                        for (int i = 0; i < matches.size(); i++) {
                             names.add(matches.get(i).getName());
                             image.add(matches.get(i).getImageUrl());
                             liked.add(matches.get(i).getLiked());
@@ -311,21 +315,21 @@ public class MatchesFragment extends Fragment {//implements LikeClickListener{
                         if (hasMatches && names.size() == 6) {
 
                             distMeters = new float[6];
-                            distMiles  = new ArrayList<>();
+                            distMiles = new ArrayList<>();
                             // Cycle through matches and assign distances to each
-                            for(int i=0; i < names.size(); i++) {
+                            for (int i = 0; i < names.size(); i++) {
 
 
-                                Location matchLocation = new Location("match");
+                                Location matchLocation = new Location(String.valueOf(R.string.match));
 
 
                                 double matchLong = Double.parseDouble(longitude.get(i));
-                                double matchLat  = Double.parseDouble(lat.get(i));
+                                double matchLat = Double.parseDouble(lat.get(i));
 
                                 matchLocation.setLatitude(matchLat);
                                 matchLocation.setLongitude(matchLong);
 
-                                Location phoneLocation = new Location("phone");
+                                Location phoneLocation = new Location(String.valueOf(R.string.phone));
 
                                 phoneLocation.setLatitude(latitudeGPS);
                                 phoneLocation.setLongitude(longitudeGPS);
@@ -340,12 +344,12 @@ public class MatchesFragment extends Fragment {//implements LikeClickListener{
                                 // If the distance is greater than 10, remove the match data
                                 // Replace limit with settings max distance
 
-                                if(distMiles.get(i) > 10.0) {
+                                if (distMiles.get(i) > maxDistance) {
                                     names.remove(i);
                                     image.remove(i);
                                     liked.remove(i);
-                                      uid.remove(i);
-                                      lat.remove(i);
+                                    uid.remove(i);
+                                    lat.remove(i);
                                     longitude.remove(i);
 
                                     i--;

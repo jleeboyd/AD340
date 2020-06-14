@@ -41,21 +41,21 @@ public class TabActivity extends AppCompatActivity{
             TabLayout tabs = findViewById(R.id.tabs);
             tabs.setupWithViewPager(viewpager);
 
-            Log.i(TAG, b.getString(Constants.KEY_USERNAME)+" tabActivity");
+//            Log.i(TAG, b.getString(Constants.KEY_USERNAME)+" tabActivity");
         }
 
        // // UNCOMMENT for single activity testing @@@@@@@@@@@@@@
-//        else{
-//
-//            ViewPager viewpager = findViewById(R.id.viewpager);
-//            setupViewPager(viewpager, b);
-//
-//            //toolbar already given due to app creation type
-//            TabLayout tabs = findViewById(R.id.tabs);
-//            tabs.setupWithViewPager(viewpager);
-//        }
+        else{
 
-        Log.i(TAG, "onCreate()");
+            ViewPager viewpager = findViewById(R.id.viewpager);
+            setupViewPager(viewpager, b);
+
+            //toolbar already given due to app creation type
+            TabLayout tabs = findViewById(R.id.tabs);
+            tabs.setupWithViewPager(viewpager);
+        }
+
+//        Log.i(TAG, "onCreate()");
     }
 
     //add fragments to tabs
@@ -69,6 +69,9 @@ public class TabActivity extends AppCompatActivity{
         adapter.addFragment(matchesFragment, "MATCHES");
         adapter.addFragment(profileFragment, "PROFILE");
         adapter.addFragment(settingsFragment, "SETTINGS");
+
+        // Add to mathces frag
+        adapter.getItem(0).setArguments(b);
 
         // Add bundle to profile fragment
         adapter.getItem(1).setArguments(b); //uncomment for working app bundle passed from activity
@@ -113,10 +116,10 @@ public class TabActivity extends AppCompatActivity{
 
 
     //call clear listeners
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Log.i(TAG, "onPause()");
-    }
+//    @Override
+//    protected void onPause() {
+//        super.onPause();
+//        Log.i(TAG, "onPause()");
+//    }
 
 }
