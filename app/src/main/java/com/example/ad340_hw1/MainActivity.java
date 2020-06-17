@@ -12,6 +12,9 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.Calendar;
@@ -39,6 +42,15 @@ public class MainActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // If user has signed in go to tab activity with test123@email.com in matches & setting bundle case
+        FirebaseAuth firebaseAuth = FirebaseAuthGetter.getFirebaseAuth();
+        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+        if (firebaseUser != null) {
+            Intent intent = new Intent(MainActivity.this, TabActivity.class);
+            startActivity(intent);
+            finish();
+        }
 
 
         //set views

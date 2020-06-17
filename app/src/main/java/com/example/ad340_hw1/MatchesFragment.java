@@ -72,12 +72,12 @@ public class MatchesFragment extends Fragment {
 
 ////         UNCOMMENT FOR TESTING @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 ////         If bundle is null set to default user for testing. TabActivity ie skip sign up
-//        else {
-//
-////            email =  getResources().getString(R.string.testEmail);
-////            email = "test@gmail.org";
-//            email = "test123@gmail.com";
-//        }
+        else {
+
+//            email =  getResources().getString(R.string.testEmail);
+//            email = "test@gmail.org";
+            email = "test123@gmail.com";
+        }
 
         // Create the observer to update the max distance for matches
         // Anytime new list of Settings, callback executes

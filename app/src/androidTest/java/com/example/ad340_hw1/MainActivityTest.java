@@ -46,8 +46,8 @@ public class MainActivityTest {
     public boolean intro = true;
 
     @Rule
-    public ActivityTestRule<MainActivity> mActivityRule = new ActivityTestRule<>(
-            MainActivity.class, true, true);
+    public ActivityTestRule<SignInActivity> mActivityRule = new ActivityTestRule<>(
+            SignInActivity.class, true, true);
 //    @Rule
 //    public ActivityTestRule<MainActivity> mActivityRuleMain = new ActivityTestRule<>(
 //            MainActivity.class, true);
@@ -60,6 +60,11 @@ public class MainActivityTest {
 //        IntroActivityTest IntroTest = new IntroActivityTest();
 //        IntroTest.clickSignUp();
 //    }
+
+    public void clickSignUp()
+    {
+        onView(withId(R.id.button_signup)).perform(click());
+    }
 
     public void hasTextOnScreen()
     {
@@ -84,7 +89,7 @@ public class MainActivityTest {
     @Test
     public void hasTextOnScreenClick()
     {
-//            clickIntroSignUp();
+            clickSignUp();
 
             onView(withId(R.id.textViewInfo))
                     .check(matches(withText(R.string.my_text)));
@@ -208,6 +213,7 @@ public class MainActivityTest {
     {
 //        clickIntroSignUp();
         //edit text fields input up until number param
+        clickSignUp();
         if(num >= 7 || num == 0)
         {
             if(hasContent)

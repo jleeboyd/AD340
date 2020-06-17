@@ -25,8 +25,8 @@ import static org.hamcrest.Matchers.not;
 @RunWith(AndroidJUnit4.class)
 public class TabActivityTest {
     @Rule
-    public ActivityTestRule<MainActivity> mActivityRule = new ActivityTestRule<>(
-            MainActivity.class, true, true);
+    public ActivityTestRule<SignInActivity> mActivityRule = new ActivityTestRule<>(
+            SignInActivity.class, true, true);
 
 //    //UNCOMMENT FOR TESTING @@@@@@@@@
 //    @Rule

@@ -64,20 +64,25 @@ dependencies {
     // Android Room setup new
     annotationProcessor 'androidx.room:room-compiler:2.2.5'
     implementation 'androidx.room:room-runtime:2.2.5'
+    
     //live data
     androidTestImplementation 'androidx.room:room-testing:2.2.5'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     implementation 'androidx.lifecycle:lifecycle-common-java8:2.2.0'
     implementation 'com.google.code.gson:gson:2.8.5'
 
-    implementation 'com.google.firebase:firebase-auth:19.3.1'
-    implementation 'com.google.android.gms:play-services-auth:18.0.0'
+    // Images via url
     implementation 'com.squareup.picasso:picasso:2.71828'
+
+    // Firebase storage
     implementation 'com.google.firebase:firebase-database:19.3.0'
     implementation 'com.google.firebase:firebase-storage:19.1.1'
     implementation 'com.google.firebase:firebase-firestore:21.4.3'
     implementation 'com.google.firebase:firebase-core:17.4.1'
+
+    // Auth
     implementation 'com.google.firebase:firebase-auth:19.3.1'
+    implementation 'com.google.android.gms:play-services-auth:18.0.0'
 
     implementation 'com.google.firebase:firebase-analytics:17.2.2'
 
